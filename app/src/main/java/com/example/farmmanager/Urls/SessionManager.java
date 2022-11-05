@@ -17,6 +17,7 @@ public class SessionManager {
     public static final String ID = "ID";
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
+    public static final String FARMNAME = "FARMNAME";
     public SharedPreferences.Editor editor;
     public Context context;
     SharedPreferences sharedPreferences;
@@ -29,13 +30,13 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String contact, String fullname, String id
+    public void createSession(String contact, String fullname, String id, String farmname
     ) {
         editor.putBoolean(LOGIN, true);
-
         editor.putString(CONTACT, contact);
         editor.putString(FULLNAME, fullname);
         editor.putString(ID, id);
+        editor.putString(FARMNAME, farmname);
         editor.apply();
 
     }
@@ -46,9 +47,15 @@ public class SessionManager {
 
     public void checkLogin() {
         if (!this.isLogin()) {
-            Intent i = new Intent(context, Login.class);
-            context.startActivity(i);
-            ((MainActivity) context).finish();
+//            Intent i = new Intent(context, Login.class);
+//            context.startActivity(i);
+//            ((MainActivity) context).finish();
+            Intent intent = new Intent(context, Login.class);
+            intent.putExtra("finish", true);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                    Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                    Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         }
     }
 
@@ -57,6 +64,7 @@ public class SessionManager {
         user.put(CONTACT, sharedPreferences.getString(CONTACT, null));
         user.put(FULLNAME, sharedPreferences.getString(FULLNAME, null));
         user.put(ID, sharedPreferences.getString(ID, null));
+        user.put(FARMNAME, sharedPreferences.getString(FARMNAME, null));
 
         return user;
     }
@@ -64,8 +72,12 @@ public class SessionManager {
     public void logout() {
         editor.clear();
         editor.commit();
-        Intent i = new Intent(context, Login.class);
-        context.startActivity(i);
+        Intent intent = new Intent(context, Login.class);
+        intent.putExtra("finish", true);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
+                Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 
 }

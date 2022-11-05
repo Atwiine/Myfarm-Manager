@@ -1,15 +1,18 @@
 package com.example.farmmanager.AnimalSection;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.farmmanager.Adapters.MilkResultsAdapter;
 import com.example.farmmanager.Modals.MilkResultsModel;
 import com.example.farmmanager.R;
+import com.example.farmmanager.Urls.SessionManager;
 import com.example.farmmanager.Urls.Urls;
 
 import org.json.JSONArray;
@@ -35,9 +39,11 @@ public class MilkResults extends AppCompatActivity {
     List<MilkResultsModel> mData;
     MilkResultsAdapter adapter;
     TextView error_message_balance, no_message_balance, seeltecttime;
-//    SessionManager sessionManager;
+    SessionManager sessionManager;
     Urls urls;
-    String getID;
+    String getID,farmname;
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +51,18 @@ public class MilkResults extends AppCompatActivity {
         setContentView(R.layout.activity_milkresults);
 
         urls = new Urls();
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getID = user.get(SessionManager.ID);
+        farmname = user.get(SessionManager.FARMNAME);
+
         error_message_balance = findViewById(R.id.error_message_balance);
         no_message_balance = findViewById(R.id.no_message_balance);
         seeltecttime = findViewById(R.id.seeltecttime);
 
         /*receive the selected time frame*/
         String selectedtime = getIntent().getStringExtra("time");
+        Toast.makeText(this, "ss" + selectedtime, Toast.LENGTH_SHORT).show();
         seeltecttime.setText(selectedtime);
         /*check for the selected time frame and search against that and the current date*/
         switch (selectedtime) {
@@ -65,13 +77,20 @@ public class MilkResults extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview_milking_results);
         mData = new ArrayList<>();
-//        mData.add(new MilkResultsModel("1", "230", "30", "200", "", "9/24/2022"));
-//        mData.add(new MilkResultsModel("1", "230", "30", "200", "", "9/24/2022"));
-//        mData.add(new MilkResultsModel("1", "230", "30", "200", "", "9/24/2022"));
-//        mData.add(new MilkResultsModel("1", "230", "30", "200", "", "9/24/2022"));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MilkResultsAdapter(this, mData);
         recyclerView.setAdapter(adapter);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        // SetOnRefreshListener on SwipeRefreshLayout
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                Clear();
+                loadMilkingResults(selectedtime);
+            }
+        });
 
     }
 
@@ -117,22 +136,29 @@ public class MilkResults extends AppCompatActivity {
                         e.printStackTrace();
                         error_message_balance.setVisibility(View.VISIBLE);
                         error_message_balance.setText(e.toString());
-                        // Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+//                         Toast.makeText(this, "Something went wrong, please try again" +e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
             progressDialog.dismiss();
             error_message_balance.setVisibility(View.VISIBLE);
-            //Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
+            error_message_balance.setText(error.toString());
+//            Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
 
         }) {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("selectedtime", selectedtime);
+                params.put("farmname", farmname);
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-
+    /*clears the recyclerview once a message is sent*/
+    @SuppressLint("NotifyDataSetChanged")
+    public void Clear() {
+        mData.clear();
+        adapter.notifyDataSetChanged();
+    }
 }

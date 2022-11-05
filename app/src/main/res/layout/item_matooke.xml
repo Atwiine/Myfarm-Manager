@@ -8,115 +8,151 @@
     tools:context=".AnimalSection.AnimalManagement">
 
 
-     <com.google.android.material.card.MaterialCardView
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:orientation="vertical"
-         android:layout_margin="10dp"
-         app:cardElevation="3dp"
-         app:cardCornerRadius="10dp"
-         >
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
 
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:orientation="vertical"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
 
-             >
+            >
 
-                 <RelativeLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:layout_margin="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
-             <RelativeLayout
-                 android:layout_width="match_parent"
-                 android:layout_alignParentEnd="true"
-                 android:layout_height="8dp"
-                 android:layout_alignParentTop="true"
-                 android:background="@drawable/bg_employe"
-               />
-                     <LinearLayout
-                         android:layout_width="match_parent"
-                         android:layout_height="wrap_content"
-                         android:orientation="vertical"
-android:layout_marginTop="25dp"
-                         >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/bg_employe" />
 
-                     <TextView
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_marginStart="10dp"
-                         android:fontFamily="@font/poppins_semibold"
-                         android:text="Total number of bunches"
-                         android:textColor="@color/black"
-                         android:textSize="14sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:orientation="vertical">
 
-                         <TextView
-                             android:id="@+id/total_bunches"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_marginStart="10dp"
-                             android:fontFamily="@font/poppins_medium"
-                             android:text="144"
-                             android:textColor="@color/black"
-                             android:textSize="14sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Total number of bunches"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/total_bunches"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="144"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
 
 
-                         <LinearLayout
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:orientation="horizontal"
-                             android:layout_gravity="end"
-                             android:padding="10dp"
-                             android:layout_margin="5dp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal"
+                        android:padding="10dp"
 
-                             >
+                        >
 
-                         <TextView
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_marginStart="10dp"
-                             android:fontFamily="@font/poppins_semibold"
-                             android:text="Date"
-                             android:layout_gravity="end"
-                             android:textColor="@color/black"
-                             android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Date"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
 
-                         <TextView
-                             android:id="@+id/date"
-                             android:layout_width="wrap_content"
-                             android:layout_height="wrap_content"
-                             android:layout_marginStart="10dp"
-                             android:fontFamily="@font/poppins_medium"
-                             android:text="12/05/2022"
-                             android:layout_gravity="end"
-                             android:textColor="@color/black"
-                             android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="12/05/2022"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
 
-                             <TextView
-                                 android:id="@+id/id"
-                                 android:layout_width="wrap_content"
-                                 android:layout_height="wrap_content"
-                                 android:layout_marginStart="10dp"
-                                 android:fontFamily="@font/poppins_medium"
-                                 android:text=""
-                                 android:visibility="gone"
-                                 android:layout_gravity="end"
-                                 android:textColor="@color/white"
-                                 android:textSize="14sp" />
-                         </LinearLayout>
+                        <TextView
+                            android:id="@+id/id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
 
-</LinearLayout>
+                    <RelativeLayout
+                        android:id="@+id/linear_manager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="horizontal">
 
-                 </RelativeLayout>
+                        <TextView
+                            android:id="@+id/edit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:padding="10dp"
+                            android:text="Edit"
+                            android:textColor="@color/purple_700"
+                            android:textSize="14sp"
+                            app:drawableLeftCompat="@drawable/ic_baseline_edit_note_24" />
+
+                        <TextView
+                            android:id="@+id/delete"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:gravity="end"
+                            android:padding="10dp"
+                            android:text="Delete"
+                            android:textColor="@color/redoringal"
+                            android:textSize="14sp"
+                            app:drawableLeftCompat="@drawable/ic_baseline_delete_24" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+            </RelativeLayout>
 
 
-         </LinearLayout>
+        </LinearLayout>
 
 
-     </com.google.android.material.card.MaterialCardView>
-
+    </com.google.android.material.card.MaterialCardView>
 
 
 </RelativeLayout>

@@ -81,11 +81,12 @@ public class Login extends AppCompatActivity {
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 Log.i("tagconvertstr", "[" + response + "]");
                                 JSONObject object = jsonArray.getJSONObject(i);
-                                String id = object.getString("userid");
-                                String fullname = object.getString("fullnames");
-                                String password1 = object.getString("phone");
+                                String id = object.getString("id");
+                                String fullname = object.getString("name");
+                                String password1 = object.getString("number");
+                                String FARMNAME = object.getString("farmname");
 
-                                sessionManager.createSession( password1,fullname, id);
+                                sessionManager.createSession( password1,fullname, id,FARMNAME);
                                 Intent intent = new Intent(Login.this, MainActivity.class);
                                     intent.putExtra("username", fullname);
                                     startActivity(intent);

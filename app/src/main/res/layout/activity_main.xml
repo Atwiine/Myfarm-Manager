@@ -17,29 +17,48 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:orientation="vertical">
 
+                android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_alignParentEnd="true"
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:id="@+id/rr"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="MyFarm"
+                    android:text="My"
                     android:textColor="@color/black"
-                    android:textSize="20sp" />
+                    android:textSize="24sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toEndOf="@+id/rr"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Farm"
+                    android:textColor="@color/purple_700"
+                    android:textSize="20sp" />
+            </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_margin="10dp">
 
@@ -47,7 +66,7 @@
                         android:id="@+id/imgmessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_baseline_message"
+                        android:src="@drawable/searchs"
                         android:onClick="openSettings"
                         />
 
@@ -74,19 +93,34 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Hello, "
                     android:textColor="@color/black"
-                    android:textSize="25sp" />
+                    android:textSize="28sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/hellotxt"
                     android:layout_marginStart="10dp"
-                    android:drawableEnd="@drawable/ic_baseline_front_hand_24"
                     android:drawablePadding="10dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Manager"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="   Manager"
+                    android:id="@+id/name"
                     android:textColor="@color/black"
                     android:textSize="25sp" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationView"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toEndOf="@id/name"
+                    android:visibility="visible"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/waving" />
 
             </RelativeLayout>
 

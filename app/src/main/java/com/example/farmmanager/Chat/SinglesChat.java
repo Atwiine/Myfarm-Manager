@@ -1,8 +1,10 @@
 package com.example.farmmanager.Chat;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -55,8 +57,8 @@ public class SinglesChat extends AppCompatActivity {
     ImageView sendBtn,image_nochat,sImage;
     TextView fphone, you, patient, no_chat,check_new,sending_chat,notsending_chat;
     Urls urls;
-
-
+    Handler mHandler;
+    ProgressDialog mProgressBar;
     /***
      * remove the un wanted toasts and correct the ones needed*/
 
@@ -118,7 +120,38 @@ public class SinglesChat extends AppCompatActivity {
 
         adapter = new SingleChatAdapter(getApplicationContext(), mData);
 
-        getSMS();
+//        mHandler = new Handler();
+//        runnable = new Runnable() {
+//            @Override
+//            public void run() {
+//                getSMS();
+//
+//                mHandler.postDelayed(this, 1000);
+//            }
+//        };
+//
+//        mHandler.post(runnable);
+
+
+        mHandler=new Handler();
+//        mProgressBar= new ProgressDialog(SinglesChat.this);
+//        mProgressBar.setMax(100);
+//        mProgressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+//        mProgressBar.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        getSMS();
+                        mHandler.postDelayed(this, 1000);
+//                        Toast.makeText(SinglesChat.this, "aaaaaa", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).start();
     }
 
     private void sendSMS() {

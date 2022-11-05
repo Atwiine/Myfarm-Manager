@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -22,6 +23,7 @@ import com.example.farmmanager.MainActivity;
 import com.example.farmmanager.MatookeSection.AddThings;
 import com.example.farmmanager.Modals.EmployeeModel;
 import com.example.farmmanager.R;
+import com.example.farmmanager.Urls.SessionManager;
 import com.example.farmmanager.Urls.Urls;
 
 import org.json.JSONArray;
@@ -39,7 +41,11 @@ public class Employees extends AppCompatActivity {
     List<EmployeeModel> mData;
     EmployeeAdapter adapter;
     TextView error_message_balance, no_message_balance, total;
+    SessionManager sessionManager;
     Urls urls;
+    String getID,farmname;
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -49,6 +55,11 @@ public class Employees extends AppCompatActivity {
         setContentView(R.layout.activity_employees);
 
         urls = new Urls();
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getID = user.get(SessionManager.ID);
+        farmname = user.get(SessionManager.FARMNAME);
+
         error_message_balance = findViewById(R.id.error_message_balance);
         no_message_balance = findViewById(R.id.no_message_balance);
 
@@ -59,6 +70,16 @@ public class Employees extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new EmployeeAdapter(this, mData);
         recyclerView.setAdapter(adapter);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        // SetOnRefreshListener on SwipeRefreshLayout
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                Clear();
+                loadEmployees();
+            }
+        });
 
         loadEmployees();
     }
@@ -92,9 +113,10 @@ public class Employees extends AppCompatActivity {
                                 String gender = inputsObjects.getString("gender");
                                 String nextofkin = inputsObjects.getString("nextofkin");
                                 String contactnextofkim = inputsObjects.getString("contactnextofkim");
+                                String age = inputsObjects.getString("age");
 
                                 EmployeeModel inputsModel =
-                                        new EmployeeModel(id, name, number, role, address, gender,nextofkin,contactnextofkim
+                                        new EmployeeModel(id, name, number, role, address, gender,nextofkin,contactnextofkim,age
                                         );
                                 mData.add(inputsModel);
                             }
@@ -116,7 +138,7 @@ public class Employees extends AppCompatActivity {
         }) {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("", "");
+                params.put("farmname", farmname);
                 return params;
             }
         };
@@ -132,5 +154,10 @@ public class Employees extends AppCompatActivity {
         startActivity(gg);
 
     }
-
+    /*clears the recyclerview once a message is sent*/
+    @SuppressLint("NotifyDataSetChanged")
+    public void Clear() {
+        mData.clear();
+        adapter.notifyDataSetChanged();
+    }
 }

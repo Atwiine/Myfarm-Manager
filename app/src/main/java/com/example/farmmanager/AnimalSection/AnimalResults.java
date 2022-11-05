@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,6 +24,7 @@ import com.example.farmmanager.Adapters.AnimalResultsAdapter;
 import com.example.farmmanager.MatookeSection.AddThings;
 import com.example.farmmanager.Modals.AnimalResultsModel;
 import com.example.farmmanager.R;
+import com.example.farmmanager.Urls.SessionManager;
 import com.example.farmmanager.Urls.Urls;
 
 import org.json.JSONArray;
@@ -41,9 +43,11 @@ public class AnimalResults extends AppCompatActivity {
     List<AnimalResultsModel> mData;
     AnimalResultsAdapter adapter;
     TextView error_message_balance, no_message_balance, selectedtype,pickedoption;
-//    SessionManager sessionManager;
+    SessionManager sessionManager;
     Urls urls;
-    String getID;
+    String getID,farmname;
+    SwipeRefreshLayout swipeRefreshLayout;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -52,6 +56,11 @@ public class AnimalResults extends AppCompatActivity {
         setContentView(R.layout.activity_animalresults);
 
         urls = new Urls();
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getID = user.get(SessionManager.ID);
+        farmname = user.get(SessionManager.FARMNAME);
+
         error_message_balance = findViewById(R.id.error_message_balance);
         no_message_balance = findViewById(R.id.no_message_balance);
         selectedtype = findViewById(R.id.selectedtype);
@@ -73,6 +82,17 @@ public class AnimalResults extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new AnimalResultsAdapter(this, mData);
         recyclerView.setAdapter(adapter);
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        // SetOnRefreshListener on SwipeRefreshLayout
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+                Clear();
+                loadResults(selectedtypes);
+            }
+        });
 
         /*loading the results*/
         loadResults(selectedtypes);
@@ -105,11 +125,12 @@ public class AnimalResults extends AppCompatActivity {
                                 String weight = inputsObjects.getString("weight");
                                 String date = inputsObjects.getString("date");
                                 String checker = inputsObjects.getString("checkere");//for checking if this animal has young ones
+                                String type = inputsObjects.getString("type");//for checking if this animal has young ones
 
                                 String parent_tagnumber = inputsObjects.getString("parent_tagnumber");
 
                                 AnimalResultsModel inputsModel =
-                                        new AnimalResultsModel(tagnumber, gender, id,date,weight,checker,parent_tagnumber
+                                        new AnimalResultsModel(tagnumber, gender, id,date,weight,checker,parent_tagnumber,type
                                         );
                                 mData.add(inputsModel);
                             }
@@ -119,7 +140,7 @@ public class AnimalResults extends AppCompatActivity {
                     } catch (JSONException e) {
                         progressDialog.dismiss();
                         e.printStackTrace();
-                        Toast.makeText(this, "Sometlease try again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Something went wrong please try again", Toast.LENGTH_SHORT).show();
                         error_message_balance.setVisibility(View.VISIBLE);
                         error_message_balance.setText(e.toString());
                     }
@@ -133,6 +154,7 @@ public class AnimalResults extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("selectedtype", selectedtype);
+                params.put("farmname", farmname);
                 return params;
             }
         };
@@ -150,5 +172,11 @@ public class AnimalResults extends AppCompatActivity {
         gg.putExtra("type",type);
         gg.putExtra("from",from);
         startActivity(gg);
+    }
+    /*clears the recyclerview once a message is sent*/
+    @SuppressLint("NotifyDataSetChanged")
+    public void Clear() {
+        mData.clear();
+        adapter.notifyDataSetChanged();
     }
 }

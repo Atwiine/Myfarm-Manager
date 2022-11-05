@@ -1,11 +1,11 @@
 package com.example.farmmanager.Urls;
 
 public class Urls {
-    public String https = "http://172.16.0.13/myfarm/";
-//    public String https = "https://teachingministriesapp.com/alpha/";
+//    public String https = "http://172.16.0.49/myfarm/";
+  public String https = "https://jehooshfamily.com/myfarm/";
 
 
-  public String LOGIN_URL = https + "login.php";///n got 
+  public String LOGIN_URL = https + "login_manager.php";///n got
     public String FIRSTREG_URL = https + "register.php";///n got 
     public String GET_SINGLE_MESSAGES = https + "message_private_list.php";///n got
     public String LOAD_ANIMAL_RESULTS = https + "load_animal_results.php";///n later
@@ -22,5 +22,8 @@ public class Urls {
   public String SEND_MILKING_RESULTS = https + "send_milk.php";
   public String SEND_ANIMAL_RESULTS = https + "send_animal.php";
   public String SEND_EMPLOYEES = https + "send_employees.php";
+
+  public String UPDATE_PROFILE = https + "update_files.php";//
+  public String DELETE_FILES_URL = https + "delete_files.php";//
 
 }

@@ -2,13 +2,18 @@ package com.example.farmmanager.MatookeSection;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -17,40 +22,48 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.farmmanager.Adapters.MatookAdapter;
 import com.example.farmmanager.AnimalSection.AnimalResults;
 import com.example.farmmanager.AnimalSection.MilkActivity;
 import com.example.farmmanager.AnimalSection.MilkResults;
 import com.example.farmmanager.Employees.Employees;
-import com.example.farmmanager.Modals.MatookeModel;
 import com.example.farmmanager.R;
+import com.example.farmmanager.Urls.SessionManager;
 import com.example.farmmanager.Urls.Urls;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class AddThings extends AppCompatActivity {
 
 
-    TextView chosentitle, selecteddate, heading, no_message_balance_selected_alpha, total;
-    Spinner categorycattle, categorygoat, timesent,gender;
+    TextView chosentitle, selecteddate, iddAnimal, matookeid, milkid,IDEmployee,genderss;
+    Spinner categorycattle, categorygoat, timesent, gender;
     Urls urls;
-    LinearLayout addanimalsoption, addmatookeoption, addmilkption, addemployeeoption;
+    LinearLayout addanimalsoption, addmatookeoption, addmilkption,
+            addemployeeoption, linear_pnumber, sendani, updateani, updateMatookes, addMatooke, addMilk, updateMilk,
+    addEmployees ,updateEmployee;
     CalendarView calendermatooke;
-    EditText total_bunches, username, age, home_litres,diary_litres,comment_milk,
-            total_litres,contact,nextkincontact,address,nextkin
-            ,tagnumber,weight,parenttagnumber,role;
+    EditText total_bunches, username, age, home_litres, diary_litres, comment_milk,
+            total_litres, contact, nextkincontact, address, nextkin, tagnumber, weight, parenttagnumber, role, selectedGender,
+            dateMatooke, selectedMilkTime;
     String from;
-    String selectedtypes,ccc;
+    String selectedtypes, ccc;
     AlertDialog.Builder builder;
+    LottieAnimationView animationView;
+    Dialog loadingUI;
+    DatePickerDialog datePickerDialog;
+    SessionManager sessionManager;
+    String getID, farmname;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -60,14 +73,25 @@ public class AddThings extends AppCompatActivity {
 
         builder = new AlertDialog.Builder(this);
         urls = new Urls();
+        sessionManager = new SessionManager(getApplicationContext());
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        getID = user.get(SessionManager.ID);
+        farmname = user.get(SessionManager.FARMNAME);
         chosentitle = findViewById(R.id.chosentitle);
+
+
+        /*receive the selected */
+        selectedtypes = getIntent().getStringExtra("type");
+        from = getIntent().getStringExtra("from");// who sent the intent
+
 
         addanimalsoption = findViewById(R.id.addanimalsoption);
         addmatookeoption = findViewById(R.id.addmatookeoption);
         addmilkption = findViewById(R.id.addmilkption);
         addemployeeoption = findViewById(R.id.addemployeeoption);
 
-
+        /****
+         * START  EMPLOYEES*/
 //        section for employees
         username = findViewById(R.id.username);
         age = findViewById(R.id.age);
@@ -77,67 +101,225 @@ public class AddThings extends AppCompatActivity {
         nextkin = findViewById(R.id.nextkin);
         gender = findViewById(R.id.gender);
         role = findViewById(R.id.role);
+        updateEmployee = findViewById(R.id.updateEmployee);
+        addEmployees = findViewById(R.id.addEmployees);
+        IDEmployee = findViewById(R.id.IDEmployee);
+        genderss = findViewById(R.id.genderss);
 
+
+        /*handle the incoming intents */
+        String empID = getIntent().getStringExtra("emid");
+        if (empID != null && !empID.isEmpty()) {
+            IDEmployee.setText(getIntent().getStringExtra("emid"));
+            address.setText(getIntent().getStringExtra("address"));
+            role.setText(getIntent().getStringExtra("role"));
+            username.setText(getIntent().getStringExtra("name"));
+            contact.setText(getIntent().getStringExtra("number"));
+            nextkin.setText(getIntent().getStringExtra("nextofkin"));
+            nextkincontact.setText(getIntent().getStringExtra("contactnextofkim"));
+            age.setText(getIntent().getStringExtra("age"));
+            genderss.setText(getIntent().getStringExtra("gender"));
+            genderss.setVisibility(View.VISIBLE);
+            addemployeeoption.setVisibility(View.VISIBLE);
+            updateEmployee.setVisibility(View.VISIBLE);
+            addEmployees.setVisibility(View.GONE);
+            gender.setVisibility(View.GONE);
+            chosentitle.setText("Edit employee record");
+        }
+
+        genderss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gender.setVisibility(View.VISIBLE);
+            }
+        });
+
+                /****
+                 * END EMPLOYEES HANDLE*/
+
+
+
+        /****
+         * START ANIMAL HANDLE*/
 //        animal section
         tagnumber = findViewById(R.id.tagnumber);
         weight = findViewById(R.id.weight);
         parenttagnumber = findViewById(R.id.parenttagnumber);
         categorycattle = findViewById(R.id.categorycattle);
         categorygoat = findViewById(R.id.categorygoat);
+        linear_pnumber = findViewById(R.id.linear_pnumber);
+        selectedGender = findViewById(R.id.selectedGender);
+        iddAnimal = findViewById(R.id.iddAnimal);
+        sendani = findViewById(R.id.sendani);
+        updateani = findViewById(R.id.updateani);
 
+
+        String wwe = getIntent().getStringExtra("checker");
+        if (wwe != null && !wwe.isEmpty()) {
+            tagnumber.setText(getIntent().getStringExtra("tagnumber"));
+            parenttagnumber.setText(getIntent().getStringExtra("ptagnumber"));
+            weight.setText(getIntent().getStringExtra("weight"));
+            iddAnimal.setText(getIntent().getStringExtra("id"));
+            categorygoat.setVisibility(View.GONE);
+            categorycattle.setVisibility(View.GONE);
+            if (parenttagnumber.getText().toString().equals("0")) {
+                linear_pnumber.setVisibility(View.GONE);
+            }
+            selectedGender.setVisibility(View.VISIBLE);
+            selectedGender.setText(getIntent().getStringExtra("gender"));
+            sendani.setVisibility(View.GONE);
+            updateani.setVisibility(View.VISIBLE);
+
+        }
+
+        selectedGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (selectedtypes.equals("Cattle")) {
+                    categorycattle.setVisibility(View.VISIBLE);
+                    categorygoat.setVisibility(View.GONE);
+                } else if (selectedtypes.equals("Goat")) {
+                    categorygoat.setVisibility(View.VISIBLE);
+                    categorycattle.setVisibility(View.GONE);
+                }
+
+            }
+        });
+        /****
+         * END ANIMAL HANDLE*/
+
+        /****
+         * START MATOOKE HANDLE*/
 //        matooke sedtion
         total_bunches = findViewById(R.id.total_bunches);
-        calendermatooke = findViewById(R.id.calendermatooke);
-        selecteddate = findViewById(R.id.selecteddate);
+        dateMatooke = findViewById(R.id.dateMatooke);
+        addMatooke = findViewById(R.id.addMatooke);
+        updateMatookes = findViewById(R.id.updateMatookes);
+        matookeid = findViewById(R.id.matookeid);
+
+        /*handle the incoming matooke intents*/
+        String mID = getIntent().getStringExtra("id");
+        if (mID != null && !mID.isEmpty()) {
+            total_bunches.setText(getIntent().getStringExtra("total_bunches"));
+            matookeid.setText(getIntent().getStringExtra("id"));
+            dateMatooke.setText(getIntent().getStringExtra("date"));
+            addmatookeoption.setVisibility(View.VISIBLE);
+            updateMatookes.setVisibility(View.VISIBLE);
+            addMatooke.setVisibility(View.GONE);
+            chosentitle.setText("Edit matooke record");
+        }
 
 
+        dateMatooke.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // calender class's instance and get current date , month and year from calender
+                final Calendar c = Calendar.getInstance();
+                int mYear = c.get(Calendar.YEAR); // current year
+                int mMonth = c.get(Calendar.MONTH); // current month
+                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
+                // date picker dialog
+                datePickerDialog = new DatePickerDialog(AddThings.this,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year,
+                                                  int monthOfYear, int dayOfMonth) {
+                                // set day of month , month and year value in the edit text
+                                dateMatooke.setText(year + "-"
+                                        + (monthOfYear + 1) + "-" + dayOfMonth);
+
+                            }
+                        }, mYear, mMonth, mDay);
+                datePickerDialog.show();
+
+            }
+        });
+
+        /****
+         * END MATOOKE HANDLE*/
+
+        /****
+         * START MILK HANDLE*/
 //        milk section
         total_litres = findViewById(R.id.total_litres);
         home_litres = findViewById(R.id.home_litres);
         timesent = findViewById(R.id.timesent);
         comment_milk = findViewById(R.id.comment_milk);
         diary_litres = findViewById(R.id.diary_litres);
+        addMilk = findViewById(R.id.addMilk);
+        updateMilk = findViewById(R.id.updateMilk);
+        milkid = findViewById(R.id.milkid);
+        selectedMilkTime = findViewById(R.id.selectedMilkTime);
+
+        /*handle the incoming matooke intents*/
+        String milkID = getIntent().getStringExtra("id");
+        if (milkID != null && !milkID.isEmpty()) {
+            total_litres.setText(getIntent().getStringExtra("total"));
+            home_litres.setText(getIntent().getStringExtra("home"));
+            selectedMilkTime.setText(getIntent().getStringExtra("timesent"));
+            comment_milk.setText(getIntent().getStringExtra("comment"));
+            diary_litres.setText(getIntent().getStringExtra("diary"));
+            milkid.setText(getIntent().getStringExtra("id"));
+
+            selectedMilkTime.setVisibility(View.VISIBLE);
+            updateMilk.setVisibility(View.VISIBLE);
+            addMilk.setVisibility(View.GONE);
+            timesent.setVisibility(View.GONE);
+            chosentitle.setText("Edit milk record");
+        }
+
+        selectedMilkTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                timesent.setVisibility(View.VISIBLE);
+            }
+        });
 
 
-        /*receive the selected */
-         selectedtypes = getIntent().getStringExtra("type");
-        from = getIntent().getStringExtra("from");// who sent the intent
-//        chosentitle.setText(selectedtypes);
+/****
+ * END MILK HANDLE*/
 
 
         /**ANIMAL SECTION*/
         /*find out who sent the intent and then show their layout*/
-        if (from.equals("Animal")) {
+        if (from != null && from.equals("Animal")) {
             addanimalsoption.setVisibility(View.VISIBLE);
+            addmatookeoption.setVisibility(View.GONE);
         }
 
         /*find out which animal was selected and then show the drop options*/
-        if (selectedtypes.equals("Cattle")) {
+        if (selectedtypes != null && selectedtypes.equals("Cattle")) {
             categorycattle.setVisibility(View.VISIBLE);
             categorygoat.setVisibility(View.GONE);
-            chosentitle.setText("Add Cattle");
-        } else if (selectedtypes.equals("Goat")) {
+            chosentitle.setText("Add cattle record");
+            if (wwe != null && !wwe.isEmpty()) {
+                chosentitle.setText("Edit cattle record");
+            }
+        } else if (selectedtypes != null && selectedtypes.equals("Goat")) {
             categorygoat.setVisibility(View.VISIBLE);
-            chosentitle.setText("Add Goats");
+            chosentitle.setText("Add goat record");
             categorycattle.setVisibility(View.GONE);
-
+            if (wwe != null && !wwe.isEmpty()) {
+                chosentitle.setText("Edit goat record");
+            }
         }
 
         /**MATOOKE SECTION*/
-        if (from.equals("Matooke")) {
+        if (from != null && from.equals("Matooke")) {
             addmatookeoption.setVisibility(View.VISIBLE);
             chosentitle.setText("Add matooke bunches");
         }
 
         /**MILK SECTION*/
-        if (from.equals("Milk")) {
+        if (from != null && from.equals("Milk")) {
             addmilkption.setVisibility(View.VISIBLE);
             chosentitle.setText("Add milked litres");
         }
 
 
         /**MILK SECTION*/
-        if (from.equals("Employees")) {
+        if (from != null && from.equals("Employees")) {
             addemployeeoption.setVisibility(View.VISIBLE);
         }
 
@@ -145,6 +327,11 @@ public class AddThings extends AppCompatActivity {
 
     /*handle the going back part*/
     public void goBack(View view) {
+
+//        if (from.isEmpty() && from != null){
+//            Toast.makeText(this, "sapp", Toast.LENGTH_SHORT).show();
+//        }else {
+
 
         switch (from) {
             case "Cattle": {
@@ -177,7 +364,7 @@ public class AddThings extends AppCompatActivity {
                 break;
         }
 
-
+//    }
     }
 
     /*for adding animals*
@@ -186,14 +373,13 @@ public class AddThings extends AppCompatActivity {
      * then on the parent tag number,,, if this section is filled in ,,, we are going to add it in the db
      * and then on the checker part indicate Yes for this animal is a new born */
     public void sendAnimals(View view) {
-        builder.setMessage("Are you sure you want to submit this information") .setTitle("Double your information before submitting");
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
 
         //Setting message manually and performing action on button click
         builder.setMessage("Do you want to submit this information ?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
                         sendAnimals();
                     }
                 })
@@ -205,7 +391,7 @@ public class AddThings extends AppCompatActivity {
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually
-        alert.setTitle("Double your information before submitting");
+        alert.setTitle("Double check your information before submitting");
         alert.show();
 
 
@@ -215,14 +401,13 @@ public class AddThings extends AppCompatActivity {
     /*for adding matooke ...
      * will be getting the total bunches cut and the date that they were cut on */
     public void sendMatooke(View view) {
-        builder.setMessage("Are you sure you want to submit this information") .setTitle("Double your information before submitting");
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
 
         //Setting message manually and performing action on button click
         builder.setMessage("Do you want to submit this information ?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
                         sendMatooke();
                     }
                 })
@@ -234,19 +419,18 @@ public class AddThings extends AppCompatActivity {
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually
-        alert.setTitle("Double your information before submitting");
+        alert.setTitle("Double check your information before submitting");
         alert.show();
     }
 
     public void sendMilk(View view) {
-        builder.setMessage("Are you sure you want to submit this information") .setTitle("Double your information before submitting");
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
 
         //Setting message manually and performing action on button click
         builder.setMessage("Do you want to submit this information ?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
                         sendMilk();
                     }
                 })
@@ -258,19 +442,18 @@ public class AddThings extends AppCompatActivity {
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually
-        alert.setTitle("Double your information before submitting");
+        alert.setTitle("Double check your information before submitting");
         alert.show();
     }
 
     public void sendEmployees(View view) {
-        builder.setMessage("Are you sure you want to submit this information") .setTitle("Double your information before submitting");
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
 
         //Setting message manually and performing action on button click
         builder.setMessage("Do you want to submit this information ?")
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
                         sendEmployees();
                     }
                 })
@@ -282,13 +465,9 @@ public class AddThings extends AppCompatActivity {
         //Creating dialog box
         AlertDialog alert = builder.create();
         //Setting the title manually
-        alert.setTitle("Double your information before submitting");
+        alert.setTitle("Double check your information before submitting");
         alert.show();
     }
-
-
-
-
 
 
     /*functions for sending things */
@@ -305,29 +484,34 @@ public class AddThings extends AppCompatActivity {
 
         /*check for gender*/
         String gg = "";
-        if (sgoat.equals("Buck") || sgoat.equals("Nanny")){
+        if (sgoat.equals("Buck") || sgoat.equals("Nanny")) {
             gg = sgoat;
-        }else if (scattle.equals("Bull") || scattle.equals("Cow")){
+        } else if (scattle.equals("Bull") || scattle.equals("Cow")) {
             gg = scattle;
         }
 
-        Toast.makeText(this, "gg " + gg, Toast.LENGTH_SHORT).show();
-
-        if (!ptNo.isEmpty()){
+        if (!ptNo.isEmpty()) {
             ccc = "Yes";
-        }else {
-             ccc = "No";
+        } else {
+            ccc = "No";
         }
 
 
-        final ProgressDialog progressDialog = new ProgressDialog(AddThings.this);
-        progressDialog.setMessage("Please wait....");
-        progressDialog.show();
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.setCancelable(false);
+        loadingUI.setCanceledOnTouchOutside(false);
+        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        loadingUI.show();
 
         String finalGg = gg;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.SEND_ANIMAL_RESULTS,
                 response -> {
-                    progressDialog.dismiss();
+                    loadingUI.dismiss();
                     try {
                         Log.i("tagconvertstr", "[" + response + "]");
                         JSONObject jsonObject = new JSONObject(response);
@@ -335,13 +519,13 @@ public class AddThings extends AppCompatActivity {
                         if (success.equals("1")) {
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
 //                          check which type it is and then load the page with that
-                            if (selectedtypes.equals("Goat")){
+                            if (selectedtypes.equals("Goat")) {
                                 String type = "Goat";
                                 Intent ggs = new Intent(AddThings.this, AnimalResults.class);
                                 ggs.putExtra("type", type);
                                 startActivity(ggs);
                                 finish();
-                            }else if (selectedtypes.equals("Cattle")){
+                            } else if (selectedtypes.equals("Cattle")) {
                                 String type = "Cattle";
                                 Intent ggs = new Intent(AddThings.this, AnimalResults.class);
                                 ggs.putExtra("type", type);
@@ -351,12 +535,12 @@ public class AddThings extends AppCompatActivity {
 
                         }
                     } catch (JSONException e) {
-                        progressDialog.dismiss();
+                        loadingUI.dismiss();
                         e.printStackTrace();
-                         Toast.makeText(this, "Something went wrong, please try again" + e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Something went wrong, please try again" + e.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
-            progressDialog.dismiss();
+            loadingUI.dismiss();
             Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
 
         }) {
@@ -369,11 +553,11 @@ public class AddThings extends AppCompatActivity {
                 params.put("weight", wei);
                 params.put("checkere", ccc);
 //                if (!sgoat.isEmpty()){
-                    params.put("gender", finalGg);
+                params.put("gender", finalGg);
 //                }else {
 //                    params.put("gender", scattle);
 //                }
-//
+                params.put("farmname", farmname);
                 return params;
             }
         };
@@ -384,38 +568,39 @@ public class AddThings extends AppCompatActivity {
     private void sendMatooke() {
 
         String totalbunches = total_bunches.getText().toString().trim();
+        String dateMatookes = dateMatooke.getText().toString().trim();
 
-        calendermatooke.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
-                selecteddate.setText(dayOfMonth + "/" + month + "/" + year);
-                Toast.makeText(AddThings.this, "date " + selecteddate.getText().toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
-        final ProgressDialog progressDialog = new ProgressDialog(AddThings.this);
-        progressDialog.setMessage("Please wait....");
-        progressDialog.show();
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.setCancelable(false);
+        loadingUI.setCanceledOnTouchOutside(false);
+        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        loadingUI.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.SEND_MATOOKE,
                 response -> {
-                    progressDialog.dismiss();
+                    loadingUI.dismiss();
                     try {
                         Log.i("tagconvertstr", "[" + response + "]");
                         JSONObject jsonObject = new JSONObject(response);
                         String success = jsonObject.getString("success");
                         if (success.equals("1")) {
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(AddThings.this,Matooke.class));
+                            startActivity(new Intent(AddThings.this, Matooke.class));
                             finish();
                         }
                     } catch (JSONException e) {
-                        progressDialog.dismiss();
+                        loadingUI.dismiss();
                         e.printStackTrace();
                         Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
-            progressDialog.dismiss();
+            loadingUI.dismiss();
             Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
 
         }) {
@@ -423,7 +608,8 @@ public class AddThings extends AppCompatActivity {
 
                 Map<String, String> params = new HashMap<>();
                 params.put("total", totalbunches);
-                params.put("date_cut", selecteddate.getText().toString());
+                params.put("date_cut", dateMatookes);
+                params.put("farmname", farmname);
 
                 return params;
             }
@@ -440,29 +626,40 @@ public class AddThings extends AppCompatActivity {
         String dl = diary_litres.getText().toString().trim();
         String tl = total_litres.getText().toString().trim();
 
-        final ProgressDialog progressDialog = new ProgressDialog(AddThings.this);
-        progressDialog.setMessage("Please wait....");
-        progressDialog.show();
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.setCancelable(false);
+        loadingUI.setCanceledOnTouchOutside(false);
+        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        loadingUI.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.SEND_MILKING_RESULTS,
                 response -> {
-                    progressDialog.dismiss();
+                    loadingUI.dismiss();
                     try {
                         Log.i("tagconvertstr", "[" + response + "]");
                         JSONObject jsonObject = new JSONObject(response);
                         String success = jsonObject.getString("success");
                         if (success.equals("1")) {
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(AddThings.this, MilkResults.class));
+                            Toast.makeText(this, "time is "+ ts, Toast.LENGTH_SHORT).show();
+
+                            Intent cc = new Intent(AddThings.this, MilkResults.class);
+                            cc.putExtra("time",ts);
+                            startActivity(cc);
                             finish();
                         }
                     } catch (JSONException e) {
-                        progressDialog.dismiss();
+                        loadingUI.dismiss();
                         e.printStackTrace();
                         Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
-            progressDialog.dismiss();
+            loadingUI.dismiss();
             Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
 
         }) {
@@ -473,6 +670,7 @@ public class AddThings extends AppCompatActivity {
                 params.put("diary", dl);
                 params.put("comment", cm);
                 params.put("timesent", ts);
+                params.put("farmname", farmname);
 
                 return params;
             }
@@ -492,13 +690,20 @@ public class AddThings extends AppCompatActivity {
         String nextkins = nextkin.getText().toString().trim();
         String roles = role.getText().toString().trim();
 
-        final ProgressDialog progressDialog = new ProgressDialog(AddThings.this);
-        progressDialog.setMessage("Please wait....");
-        progressDialog.show();
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.setCancelable(false);
+        loadingUI.setCanceledOnTouchOutside(false);
+        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        loadingUI.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.SEND_EMPLOYEES,
                 response -> {
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
                     try {
                         Log.i("tagconvertstr", "[" + response + "]");
                         JSONObject jsonObject = new JSONObject(response);
@@ -509,12 +714,12 @@ public class AddThings extends AppCompatActivity {
                             finish();
                         }
                     } catch (JSONException e) {
-                        progressDialog.dismiss();
+                        loadingUI.dismiss();
                         e.printStackTrace();
                         Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
-            progressDialog.dismiss();
+            loadingUI.dismiss();
             Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
 
         }) {
@@ -528,6 +733,7 @@ public class AddThings extends AppCompatActivity {
                 params.put("role", roles);
                 params.put("address", addresss);
                 params.put("gender", genders);
+                params.put("farmname", farmname);
 
                 return params;
             }
@@ -535,5 +741,381 @@ public class AddThings extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+
+
+    public void updateAnimals(View view) {
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
+
+        //Setting message manually and performing action on button click
+        builder.setMessage("Do you want to submit this information ?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        updateAnimalss();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("Double check your information before submitting");
+        alert.show();
+    }
+
+    public void updateMatooke(View view) {
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
+
+        //Setting message manually and performing action on button click
+        builder.setMessage("Do you want to submit this information ?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        updateMatooke();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("Double check your information before submitting");
+        alert.show();
+
+    }
+
+    public void updateMilk(View view) {
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
+
+        //Setting message manually and performing action on button click
+        builder.setMessage("Do you want to submit this information ?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        updateMilk();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("Double check your information before submitting");
+        alert.show();
+    }
+
+    public void updateEmployees(View view) {
+        builder.setMessage("Are you sure you want to submit this information").setTitle("Double check your information before submitting");
+
+        //Setting message manually and performing action on button click
+        builder.setMessage("Do you want to submit this information ?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        updateEmployess();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        //Setting the title manually
+        alert.setTitle("Double check your information before submitting");
+        alert.show();
+    }
+
+    /*functions for updating things*/
+
+    private void updateAnimalss() {
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.show();
+
+        String sgoat = String.valueOf(categorygoat.getSelectedItem());
+        String scattle = String.valueOf(categorycattle.getSelectedItem());
+        String tNo = tagnumber.getText().toString().trim();
+        String ptNo = parenttagnumber.getText().toString().trim();
+        String wei = weight.getText().toString().trim();
+        String idds = iddAnimal.getText().toString().trim();
+
+        /*check for gender*/
+        if (sgoat.equals("Buck") || sgoat.equals("Nanny")) {
+            selectedGender.setText(sgoat);
+//            Toast.makeText(this, "selected " + selectedGender.getText().toString(), Toast.LENGTH_SHORT).show();
+        } else if (scattle.equals("Bull") || scattle.equals("Cow")) {
+            selectedGender.setText(scattle);
+//            Toast.makeText(this, "selected " + selectedGender.getText().toString(), Toast.LENGTH_SHORT).show();
+
+        }
+
+        if (!ptNo.isEmpty()) {
+            ccc = "Yes";
+        } else {
+            ccc = "No";
+        }
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.UPDATE_PROFILE,
+                response -> {
+                    try {
+
+                        Log.i("tagconvertstr", "[" + response + "]");
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        if (success.equals("1")) {
+                            loadingUI.dismiss();
+                            Toast.makeText(getApplicationContext(), "Updated successful", Toast.LENGTH_SHORT).show();
+                            Intent cc = new Intent(AddThings.this,AnimalResults.class);
+                            cc.putExtra("type",selectedtypes);
+                            startActivity(cc);
+                            finish();
+
+                        }
+                        loadingUI.setCancelable(false);
+                        loadingUI.setCanceledOnTouchOutside(false);
+                        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                        loadingUI.show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        loadingUI.dismiss();
+                        Toast.makeText(getApplicationContext(), "Updated not successful, please try again " + e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    loadingUI.dismiss();
+                    Toast.makeText(getApplicationContext(), "Updated not successful, please check your internet connection and try again " +error.toString(), Toast.LENGTH_SHORT).show();
+                }
+        ) {
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("parent_tagnumber", ptNo);
+                params.put("tagnumber", tNo);
+                params.put("weight", wei);
+                params.put("checkere", "Animals");
+                params.put("id", idds);
+                params.put("gender", selectedGender.getText().toString());
+                return params;
+
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
+    private void updateMatooke() {
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.show();
+
+        String totalbunches = total_bunches.getText().toString().trim();
+        String mid = matookeid.getText().toString().trim();
+        String dateMatookes = dateMatooke.getText().toString().trim();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.UPDATE_PROFILE,
+                response -> {
+                    try {
+
+                        Log.i("tagconvertstr", "[" + response + "]");
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        if (success.equals("1")) {
+                            loadingUI.dismiss();
+                            Toast.makeText(getApplicationContext(), "Update successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(AddThings.this, Matooke.class));
+                            finish();
+                        }
+                        loadingUI.setCancelable(false);
+                        loadingUI.setCanceledOnTouchOutside(false);
+                        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        loadingUI.show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        loadingUI.dismiss();
+                        Toast.makeText(getApplicationContext(), "Updated not successful, please try again " + e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    loadingUI.dismiss();
+                    Toast.makeText(getApplicationContext(), "Updated not successful, please check your internet connection and try again", Toast.LENGTH_SHORT).show();
+                }
+        ) {
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("total", totalbunches);
+                params.put("date_cut", dateMatookes);
+                params.put("id", mid);
+                params.put("checkere", "Matooke");
+                return params;
+
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
+    private void updateMilk() {
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.show();
+
+
+        String hl = home_litres.getText().toString().trim();
+        String cm = comment_milk.getText().toString().trim();
+        String dl = diary_litres.getText().toString().trim();
+        String tl = total_litres.getText().toString().trim();
+        String mmid = milkid.getText().toString().trim();
+        String tt = String.valueOf(timesent.getSelectedItem());
+        selectedMilkTime.setText(tt);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.UPDATE_PROFILE,
+                response -> {
+                    try {
+
+                        Log.i("tagconvertstr", "[" + response + "]");
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        if (success.equals("1")) {
+                            loadingUI.dismiss();
+                            Toast.makeText(getApplicationContext(), "Update successful", Toast.LENGTH_SHORT).show();
+
+                            Intent mm = new Intent(AddThings.this, MilkResults.class);
+                            mm.putExtra("time", selectedMilkTime.getText().toString());
+                            startActivity(mm);
+                            finish();
+
+                        }
+                        loadingUI.setCancelable(false);
+                        loadingUI.setCanceledOnTouchOutside(false);
+                        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        loadingUI.show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        loadingUI.dismiss();
+                        Toast.makeText(getApplicationContext(), "Updated not successful, please try again " + e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    loadingUI.dismiss();
+                    Toast.makeText(getApplicationContext(), "Updated not successful, please check your internet connection and try again", Toast.LENGTH_SHORT).show();
+                }
+        ) {
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("total", tl);
+                params.put("home", hl);
+                params.put("diary", dl);
+                params.put("comment", cm);
+                params.put("timesent", tt);
+                params.put("id", mmid);
+                params.put("checkere", "Milk");
+                return params;
+
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
+    private void updateEmployess() {
+        loadingUI = new Dialog(this);
+        loadingUI.setContentView(R.layout.right);
+        animationView = loadingUI.findViewById(R.id.animationView);
+        animationView.setVisibility(View.VISIBLE);
+        animationView
+                .playAnimation();
+        loadingUI.show();
+
+        String aa = address.getText().toString().trim();
+        String uu = username.getText().toString().trim();
+        String cc = contact.getText().toString().trim();
+        String nx = nextkin.getText().toString().trim();
+        String rr = role.getText().toString().trim();
+        String nxc = nextkincontact.getText().toString().trim();
+        String idds = IDEmployee.getText().toString();
+        String ages = age.getText().toString().trim();
+        String genders = String.valueOf(gender.getSelectedItem());
+        genderss.setText(genders);
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.UPDATE_PROFILE,
+                response -> {
+                    try {
+
+                        Log.i("tagconvertstr", "[" + response + "]");
+                        JSONObject jsonObject = new JSONObject(response);
+                        String success = jsonObject.getString("success");
+                        if (success.equals("1")) {
+                            loadingUI.dismiss();
+                            Toast.makeText(getApplicationContext(), "Update successful", Toast.LENGTH_SHORT).show();
+startActivity(new Intent(AddThings.this,Employees.class));
+finish();
+
+                        }
+                        loadingUI.setCancelable(false);
+                        loadingUI.setCanceledOnTouchOutside(false);
+                        Objects.requireNonNull(loadingUI.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                        loadingUI.show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        loadingUI.dismiss();
+                        Toast.makeText(getApplicationContext(), "Updated not successful, please try again " + e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                },
+                error -> {
+                    loadingUI.dismiss();
+                    Toast.makeText(getApplicationContext(), "Updated not successful, please check your internet connection and try again", Toast.LENGTH_SHORT).show();
+                }
+        ) {
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+
+                params.put("address", aa);
+                params.put("name", uu);
+                params.put("contact", cc);
+                params.put("nextkin", nx);
+                params.put("nextkincontact", nxc);
+                params.put("age", ages);
+                params.put("role", rr);
+                params.put("id", idds);
+                params.put("gender", genderss.getText().toString());
+                params.put("checkere", "Employess");
+                return params;
+
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
+
+
 
 }
