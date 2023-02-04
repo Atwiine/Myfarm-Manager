@@ -51,7 +51,7 @@ public class SinglesChat extends AppCompatActivity {
     SessionManager sessionManager;
     String getId;
     String usernames;
-    String userimage;
+    String farmname;
     TextView error_message,sName,sID;
     ProgressBar progressBar;
     ImageView sendBtn,image_nochat,sImage;
@@ -73,7 +73,8 @@ public class SinglesChat extends AppCompatActivity {
         HashMap<String, String> user = sessionManager.getUserDetail();
         getId = user.get(SessionManager.ID);
         usernames = user.get(SessionManager.FULLNAME);
-        
+        farmname = user.get(SessionManager.FARMNAME);
+
         fphone = findViewById(R.id.farmer_phone);
         you = findViewById(R.id.you);
         patient = findViewById(R.id.farmer);
@@ -145,6 +146,7 @@ public class SinglesChat extends AppCompatActivity {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
+//                        Clear();
                         getSMS();
                         mHandler.postDelayed(this, 1000);
 //                        Toast.makeText(SinglesChat.this, "aaaaaa", Toast.LENGTH_SHORT).show();
@@ -195,6 +197,7 @@ public class SinglesChat extends AppCompatActivity {
                 params.put("sender", scontact);//name of the sender
                 params.put("userid", getId);//their id
                 params.put("message", message);// and message
+                params.put("farmname", farmname);// and message
                 return params;
 
             }
@@ -248,14 +251,14 @@ public class SinglesChat extends AppCompatActivity {
 
     private void getSMS() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, urls.GET_SINGLE_MESSAGES,
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.GET_SINGLE_MESSAGES,
                 response -> {
                     try {
                         Log.i("tagconvertstr", "[" + response + "]");
                         JSONArray sms = new JSONArray(response);
                         if (sms.length() == 0) {
                             progressBar.setVisibility(View.GONE);
-                            error_message.setVisibility(View.INVISIBLE);
+                            error_message.setVisibility(View.GONE);
                             image_nochat.setVisibility(View.VISIBLE);
 
                         } else {
@@ -282,21 +285,31 @@ public class SinglesChat extends AppCompatActivity {
 
                         adapter = new SingleChatAdapter(getApplicationContext(), mData);
                         recyclerView.setAdapter(adapter);
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                         progressBar.setVisibility(View.GONE);
-                        error_message.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), "something went wrong, please try again"+e.toString(), Toast.LENGTH_LONG).show();
+                        error_message.setVisibility(View.VISIBLE);
+                        Toast.makeText(getApplicationContext(), "something went wrong, swipe down to try again", Toast.LENGTH_LONG).show();
 
                     }
 
                 }, error -> {
             progressBar.setVisibility(View.GONE);
-            error_message.setVisibility(View.INVISIBLE);
+            error_message.setVisibility(View.VISIBLE);
             Toast.makeText(getApplicationContext(), "could not load messages, please check your internet connection and try again" , Toast.LENGTH_LONG).show();
-        });
-        Volley.newRequestQueue(this).add(stringRequest);
+        }){
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("farmname", farmname);// and message
+                return params;
+
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
 
     }
 
@@ -305,10 +318,17 @@ public class SinglesChat extends AppCompatActivity {
     public void Clear() {
         mData.clear();
         adapter.notifyDataSetChanged();
+//        adapter.notifyItemChanged(mData.size());
     }
 
     public void goBack(View view) {
         startActivity(new Intent(SinglesChat.this,MainActivity.class));
         finish();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        return;
     }
 }

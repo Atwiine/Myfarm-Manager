@@ -61,4 +61,8 @@ public class SettingsActivity extends BottomSheetDialogFragment {
 
         return v;
     }
+    public void onBackPressed()
+    {
+        return;
+    }
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,6 +59,7 @@ public class Matooke extends AppCompatActivity {
 
         error_message_balance = findViewById(R.id.error_message_balance);
         no_message_balance = findViewById(R.id.no_message_balance);
+        total = findViewById(R.id.total);
 
 
         recyclerView = findViewById(R.id.recyclerview_matooke_results);
@@ -82,6 +84,7 @@ public class Matooke extends AppCompatActivity {
 
     public void goBack(View view) {
         startActivity(new Intent(Matooke.this, MilkMatookeMgt.class));
+        finish();
     }
 
     private void loadMatookeesults() {
@@ -102,28 +105,30 @@ public class Matooke extends AppCompatActivity {
                                 JSONObject inputsObjects = tips.getJSONObject(i);
 
                                 String id = inputsObjects.getString("id");
-                                String total = inputsObjects.getString("total");
+                                String totalss = inputsObjects.getString("total");
                                 String date = inputsObjects.getString("date");
-
+                                String totalr = inputsObjects.getString("totalresults");
+                                total.setText(totalr);
                                 MatookeModel inputsModel =
-                                        new MatookeModel(id, total, date
+                                        new MatookeModel(id, totalss, date
                                         );
                                 mData.add(inputsModel);
                             }
                             adapter = new MatookAdapter(Matooke.this, mData);
                             recyclerView.setAdapter(adapter);
+                            error_message_balance.setVisibility(View.GONE);
                         }
                     } catch (JSONException e) {
                         progressDialog.dismiss();
                         e.printStackTrace();
                         error_message_balance.setVisibility(View.VISIBLE);
-                        error_message_balance.setText(e.toString());
-                        // Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+//                        error_message_balance.setText(e.toString());
+                         Toast.makeText(this, "Something went wrong, swipe down to try again", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
             progressDialog.dismiss();
             error_message_balance.setVisibility(View.VISIBLE);
-            //Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something went wrong, check your connection and please try again", Toast.LENGTH_SHORT).show();
 
         }) {
             protected Map<String, String> getParams() {
@@ -150,5 +155,11 @@ public class Matooke extends AppCompatActivity {
     public void Clear() {
         mData.clear();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        return;
     }
 }

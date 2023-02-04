@@ -42,7 +42,7 @@ public class AnimalResults extends AppCompatActivity {
     RecyclerView recyclerView;
     List<AnimalResultsModel> mData;
     AnimalResultsAdapter adapter;
-    TextView error_message_balance, no_message_balance, selectedtype,pickedoption;
+    TextView error_message_balance, no_message_balance, selectedtype,pickedoption,total;
     SessionManager sessionManager;
     Urls urls;
     String getID,farmname;
@@ -65,7 +65,7 @@ public class AnimalResults extends AppCompatActivity {
         no_message_balance = findViewById(R.id.no_message_balance);
         selectedtype = findViewById(R.id.selectedtype);
         pickedoption = findViewById(R.id.pickedoption);
-
+        total = (TextView) findViewById(R.id.total);
         /*receive the selected time frame*/
         String selectedtypes = getIntent().getStringExtra("type");
         selectedtype.setText(selectedtypes);
@@ -116,6 +116,7 @@ public class AnimalResults extends AppCompatActivity {
                         JSONArray tips = new JSONArray(response);
                         if (tips.length() == 0) {
                             no_message_balance.setVisibility(View.VISIBLE);
+                            total.setText("0");
                         } else {
                             for (int i = 0; i < tips.length(); i++) {
                                 JSONObject inputsObjects = tips.getJSONObject(i);
@@ -126,7 +127,8 @@ public class AnimalResults extends AppCompatActivity {
                                 String date = inputsObjects.getString("date");
                                 String checker = inputsObjects.getString("checkere");//for checking if this animal has young ones
                                 String type = inputsObjects.getString("type");//for checking if this animal has young ones
-
+                                String totals = inputsObjects.getString("total");
+                                total.setText(totals);
                                 String parent_tagnumber = inputsObjects.getString("parent_tagnumber");
 
                                 AnimalResultsModel inputsModel =
@@ -136,19 +138,20 @@ public class AnimalResults extends AppCompatActivity {
                             }
                             adapter = new AnimalResultsAdapter(AnimalResults.this, mData);
                             recyclerView.setAdapter(adapter);
+                            error_message_balance.setVisibility(View.GONE);
                         }
                     } catch (JSONException e) {
                         progressDialog.dismiss();
                         e.printStackTrace();
-                        Toast.makeText(this, "Something went wrong please try again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Something went wrong swipe down to try again", Toast.LENGTH_SHORT).show();
                         error_message_balance.setVisibility(View.VISIBLE);
-                        error_message_balance.setText(e.toString());
+//                        error_message_balance.setText(e.toString());
                     }
                 }, error -> {
             progressDialog.dismiss();
             error_message_balance.setVisibility(View.VISIBLE);
-            error_message_balance.setText(error.toString());
-            Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
+//            error_message_balance.setText(error.toString());
+            Toast.makeText(this, "Something went wrong, check your connection and please try again", Toast.LENGTH_SHORT).show();
 
         }) {
             protected Map<String, String> getParams() {
@@ -178,5 +181,11 @@ public class AnimalResults extends AppCompatActivity {
     public void Clear() {
         mData.clear();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        return;
     }
 }

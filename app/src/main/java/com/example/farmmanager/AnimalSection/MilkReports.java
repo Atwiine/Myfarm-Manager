@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -109,13 +110,13 @@ public class MilkReports extends AppCompatActivity {
                             }
                             adapter = new MilkResultsAdapter(MilkReports.this, mData);
                             recyclerView.setAdapter(adapter);
+                            error_message_balance.setVisibility(View.GONE);
                         }
                     } catch (JSONException e) {
                         progressDialog.dismiss();
                         e.printStackTrace();
                         error_message_balance.setVisibility(View.VISIBLE);
-                        error_message_balance.setText(e.toString());
-                        // Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+                         Toast.makeText(this, "Something went wrong, swipe down to try again", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
             progressDialog.dismiss();
@@ -131,6 +132,12 @@ public class MilkReports extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        return;
     }
 
 }

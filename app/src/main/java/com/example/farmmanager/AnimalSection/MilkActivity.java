@@ -80,4 +80,9 @@ startActivity(mm);
         startActivity(gg);
 
     }
+    @Override
+    public void onBackPressed()
+    {
+        return;
+    }
 }

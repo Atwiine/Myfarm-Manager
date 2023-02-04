@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:layout_margin="10dp"
         app:cardElevation="3dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="5dp"
         >
 
         <LinearLayout
@@ -247,6 +247,11 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="5dp"
+                        android:background="@color/brown"/>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

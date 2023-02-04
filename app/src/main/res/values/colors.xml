@@ -12,11 +12,13 @@
     <color name="grey1">#8F8C8C</color>
     <color name="grey2">#ECECEC</color>
     <color name="grey3">#2F615F5F</color>
-    <color name="brown">#7EEC943D</color>
-    <color name="brown3">#EC943D</color>
+    <color name="brown">#04A11D</color>
+    <color name="brown4">#E80C07</color>
+    <color name="brown3">#04A11D</color>
     <color name="brown2">#7ECCA784</color>
     <color name="blue">#04A11D</color>
     <color name="blueoringnal">#039F1D</color>
+    <color name="blueoringnal2">#FFB300</color>
     <color name="red">#3CF50057</color>
     <color name="redoringal">#FF1744</color>
 

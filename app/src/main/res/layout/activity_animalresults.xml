@@ -14,22 +14,22 @@
   >
 
     <RelativeLayout
+        android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:id="@+id/top"
-        >
+        android:layout_marginTop="10dp"
+
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/selectedtype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_centerInParent="true"
             android:layout_marginEnd="10dp"
-            android:id="@+id/selectedtype"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Animal management"
@@ -42,19 +42,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_margin="10dp"
-            android:onClick="goBack"
             android:layout_centerVertical="true"
-            >
+            android:layout_margin="10dp"
+            android:onClick="goBack">
 
             <ImageView
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-                android:id="@+id/back"
-                android:padding="10dp"
                 android:background="@drawable/bg_animal"
-                />
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
 
         </RelativeLayout>
     </RelativeLayout>
@@ -63,7 +61,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/top"
-        android:layout_above="@+id/addcard"
+        android:layout_above="@+id/lll"
+        android:id="@+id/scss"
        >
 
         <LinearLayout
@@ -74,8 +73,9 @@
 
 
             <View
-                android:layout_width="120dp"
-                android:layout_height="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.9dp"
+                android:layout_margin="10dp"
                 android:background="@color/black"
                 android:layout_gravity="center"/>
 
@@ -98,7 +98,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Something went wrong, please try again later"
+                    android:text="Something went wrong, swipe down to try again "
                     android:textColor="@color/redoringal"
                     android:textSize="12sp"
                     android:visibility="gone" />
@@ -132,43 +132,127 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        app:cardElevation="5dp"
-        android:id="@+id/addcard"
-        app:cardBackgroundColor="@color/purple_700"
-        app:cardCornerRadius="6dp"
-        android:onClick="openAddAnimals"
+        android:layout_height="65dp"
+
         android:layout_alignParentBottom="true"
+        android:id="@+id/lll"
+        app:cardElevation="10dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            >
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Add "
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-            <TextView
+            android:layout_below="@id/top"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/black"/>
+
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Cattle "
-                android:id="@+id/pickedoption"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+                android:orientation="horizontal"
+                android:layout_marginStart="10dp"
+                >
 
-</RelativeLayout>
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Total records"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tt"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text=""
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/total"
+                    android:layout_toEndOf="@+id/tt"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:visibility="visible" />
+
+<!--                <com.google.android.material.button.MaterialButton-->
+<!--                    android:layout_width="100dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    android:layout_marginBottom="10dp"-->
+<!--                    android:onClick="openAddAnimals"-->
+<!--                    android:id="@+id/addcard"-->
+<!--                    android:minWidth="200dp"-->
+<!--                    android:textAllCaps="false"-->
+<!--                    />-->
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    app:cardElevation="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:onClick="openAddAnimals"
+                                  android:id="@+id/addcard"
+                                    app:cardBackgroundColor="@color/purple_700"
+                                    app:cardCornerRadius="3dp"
+                                    android:layout_alignParentBottom="true"
+                                    >
+                                    <LinearLayout
+                                        android:layout_margin="5dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal"
+                                        android:gravity="center"
+                                        android:padding="5dp"
+                                        >
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/poppins_medium"
+                                            android:text="Add "
+                                            android:textColor="@color/white"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center"
+                                            android:fontFamily="@font/poppins_medium"
+                                            android:text="Cattle "
+                                            android:id="@+id/pickedoption"
+                                            android:textColor="@color/white"
+                                            android:textSize="14sp"
+                                            android:textStyle="bold" />
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+
+                            </RelativeLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                </RelativeLayout>
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -129,7 +129,7 @@ public class MilkResultsAdapter extends RecyclerView.Adapter<MilkResultsAdapter.
 
                                         } catch (JSONException e) {
                                             e.printStackTrace();
-                                            Toast.makeText(context, "Record not deleted, please try again " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(context, "Record not deleted, please try again ", Toast.LENGTH_LONG).show();
 
                                         }
                                     }, error -> {
@@ -209,7 +209,7 @@ public class MilkResultsAdapter extends RecyclerView.Adapter<MilkResultsAdapter.
                     request.putExtra("date", mData.get(getAdapterPosition()).getDate());
                     request.putExtra("timesent", mData.get(getAdapterPosition()).getTime());
                     request.putExtra("comment", mData.get(getAdapterPosition()).getComment());
-                    request.putExtra("from", "Milk");
+                    request.putExtra("from", "MilkEdit");
                     context.startActivity(request);
                 }
             });

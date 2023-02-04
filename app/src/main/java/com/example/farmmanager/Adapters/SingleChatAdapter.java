@@ -46,7 +46,6 @@ public class SingleChatAdapter extends RecyclerView.Adapter<SingleChatAdapter.Ch
         return new ChatViewHolder(view);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onBindViewHolder(@NonNull ChatViewHolder holder, final int position) {
         //        handle session manager

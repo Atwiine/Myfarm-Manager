@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="3dp">
 
         <LinearLayout
@@ -22,73 +22,73 @@
             android:orientation="vertical"
 
             >
+            <RelativeLayout
+                android:id="@+id/relmorning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/purple_700"
+                android:visibility="gone">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Morning litres"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relafternoon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/blueoringnal2"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Afternoon litres"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relevening"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/brown4"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Evening litres"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp">
 
-                <RelativeLayout
-                    android:id="@+id/relmorning"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="@color/purple_700"
-                    android:visibility="gone">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Morning litres"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/relafternoon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="@color/blueoringnal"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Afternoon litres"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/relevening"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="@color/brown"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Evening litres"
-                        android:textColor="@color/white"
-                        android:textSize="12sp" />
-                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -113,9 +113,9 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:background="@color/brown"
                         android:layout_margin="5dp"
-                        android:background="@color/black" />
-
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -138,9 +138,9 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:background="@color/brown"
                         android:layout_margin="5dp"
-                        android:background="@color/black" />
-
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -159,13 +159,12 @@
                         android:text="180"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
-
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:background="@color/brown"
                         android:layout_margin="5dp"
-                        android:background="@color/black" />
-
+                        />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -184,7 +183,12 @@
                         android:text="180"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
-
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/brown"
+                        android:layout_margin="5dp"
+                        />
                     <LinearLayout
                         android:id="@+id/linear_comment"
                         android:layout_width="match_parent"
@@ -255,7 +259,12 @@
 
 
                     </LinearLayout>
-
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/brown"
+                        android:layout_margin="5dp"
+                        />
                     <RelativeLayout
                         android:id="@+id/linear_manager"
                         android:layout_width="match_parent"

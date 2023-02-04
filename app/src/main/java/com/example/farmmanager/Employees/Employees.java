@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -62,6 +64,7 @@ public class Employees extends AppCompatActivity {
 
         error_message_balance = findViewById(R.id.error_message_balance);
         no_message_balance = findViewById(R.id.no_message_balance);
+        total = findViewById(R.id.total);
 
 
         recyclerView = findViewById(R.id.recyclerview_employee_results);
@@ -114,7 +117,8 @@ public class Employees extends AppCompatActivity {
                                 String nextofkin = inputsObjects.getString("nextofkin");
                                 String contactnextofkim = inputsObjects.getString("contactnextofkim");
                                 String age = inputsObjects.getString("age");
-
+                                String totals =  inputsObjects.getString("total");
+                                total.setText(totals);
                                 EmployeeModel inputsModel =
                                         new EmployeeModel(id, name, number, role, address, gender,nextofkin,contactnextofkim,age
                                         );
@@ -122,18 +126,19 @@ public class Employees extends AppCompatActivity {
                             }
                             adapter = new EmployeeAdapter(Employees.this, mData);
                             recyclerView.setAdapter(adapter);
+                            error_message_balance.setVisibility(View.GONE);
                         }
                     } catch (JSONException e) {
                         progressDialog.dismiss();
                         e.printStackTrace();
                         error_message_balance.setVisibility(View.VISIBLE);
-                        error_message_balance.setText(e.toString());
-                        // Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
+//                        error_message_balance.setText(e.toString());
+                         Toast.makeText(this, "Something went wrong, swipe down to try again", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
             progressDialog.dismiss();
             error_message_balance.setVisibility(View.VISIBLE);
-            //Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something went wrong, check your connection and please try again", Toast.LENGTH_SHORT).show();
 
         }) {
             protected Map<String, String> getParams() {
@@ -159,5 +164,11 @@ public class Employees extends AppCompatActivity {
     public void Clear() {
         mData.clear();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        return;
     }
 }

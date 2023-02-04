@@ -184,6 +184,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.MilkVi
                     request.putExtra("nextofkin", mData.get(getAdapterPosition()).getNextofkin());
                     request.putExtra("contactnextofkim", mData.get(getAdapterPosition()).getContactnextofkim());
                     request.putExtra("age", mData.get(getAdapterPosition()).getAge());
+                    request.putExtra("from", "EmployeeEdit");
                     context.startActivity(request);
                 }
             });

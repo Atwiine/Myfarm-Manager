@@ -35,4 +35,9 @@ public class StartActivity extends AppCompatActivity {
     public void openLogin(View view) {
         startActivity(new Intent(StartActivity.this, Login.class));
     }
+    @Override
+    public void onBackPressed()
+    {
+        return;
+    }
 }

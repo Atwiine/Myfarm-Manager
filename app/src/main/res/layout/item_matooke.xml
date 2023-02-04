@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="5dp"
         app:cardElevation="3dp">
 
         <LinearLayout
@@ -22,18 +22,17 @@
             android:orientation="vertical"
 
             >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/purple_700" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_marginTop="4dp">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="@drawable/bg_employe" />
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -64,10 +63,10 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end"
+                        android:layout_gravity="start"
                         android:layout_margin="5dp"
                         android:orientation="horizontal"
-                        android:padding="10dp"
+
 
                         >
 
@@ -77,7 +76,7 @@
                             android:layout_gravity="end"
                             android:layout_marginStart="10dp"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="Date"
+                            android:text="Cut on"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -104,12 +103,17 @@
                             android:textSize="14sp"
                             android:visibility="gone" />
                     </LinearLayout>
-
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/brown"
+                        android:layout_margin="5dp"
+                        />
                     <RelativeLayout
                         android:id="@+id/linear_manager"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="9dp"
+                        android:layout_marginTop="5dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -118,8 +122,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="5dp"
                             android:fontFamily="@font/poppins_semibold"
                             android:padding="10dp"
                             android:text="Edit"
@@ -132,10 +134,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentEnd="true"
-                            android:layout_marginStart="5dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginEnd="5dp"
-                            android:layout_marginBottom="5dp"
                             android:fontFamily="@font/poppins_medium"
                             android:gravity="end"
                             android:padding="10dp"

@@ -92,7 +92,7 @@ public class MatookAdapter extends RecyclerView.Adapter<MatookAdapter.MilkViewHo
 
                                         } catch (JSONException e) {
                                             e.printStackTrace();
-                                            Toast.makeText(context, "Record not deleted, please try again " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                            Toast.makeText(context, "Record not deleted, please try again ", Toast.LENGTH_LONG).show();
 
                                         }
                                     }, error -> {
@@ -159,6 +159,7 @@ public class MatookAdapter extends RecyclerView.Adapter<MatookAdapter.MilkViewHo
                     request.putExtra("total_bunches", mData.get(getAdapterPosition()).getNumberBanches());
                     request.putExtra("date", mData.get(getAdapterPosition()).getDate());
                     request.putExtra("id", mData.get(getAdapterPosition()).getId());
+                    request.putExtra("from", "MatookeEdit");
                     context.startActivity(request);
                 }
             });

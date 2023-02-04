@@ -38,7 +38,7 @@ public class MilkResults extends AppCompatActivity {
     RecyclerView recyclerView;
     List<MilkResultsModel> mData;
     MilkResultsAdapter adapter;
-    TextView error_message_balance, no_message_balance, seeltecttime;
+    TextView error_message_balance, no_message_balance, seeltecttime,totalss;
     SessionManager sessionManager;
     Urls urls;
     String getID,farmname;
@@ -59,10 +59,10 @@ public class MilkResults extends AppCompatActivity {
         error_message_balance = findViewById(R.id.error_message_balance);
         no_message_balance = findViewById(R.id.no_message_balance);
         seeltecttime = findViewById(R.id.seeltecttime);
+        totalss = findViewById(R.id.total);
 
         /*receive the selected time frame*/
         String selectedtime = getIntent().getStringExtra("time");
-        Toast.makeText(this, "ss" + selectedtime, Toast.LENGTH_SHORT).show();
         seeltecttime.setText(selectedtime);
         /*check for the selected time frame and search against that and the current date*/
         switch (selectedtime) {
@@ -96,6 +96,7 @@ public class MilkResults extends AppCompatActivity {
 
     public void goBack(View view) {
         startActivity(new Intent(MilkResults.this, MilkActivity.class));
+        finish();
     }
 
     private void loadMilkingResults(String selectedtime) {
@@ -122,6 +123,8 @@ public class MilkResults extends AppCompatActivity {
                                 String date = inputsObjects.getString("date");
                                 String timesent = inputsObjects.getString("timesent");
                                 String comment = inputsObjects.getString("comment");// what happened for the milk coming late
+                                String totals =  inputsObjects.getString("totals");
+                                totalss.setText(totals);
 
                                 MilkResultsModel inputsModel =
                                         new MilkResultsModel(id, total, home, diary, comment, date,timesent
@@ -130,19 +133,20 @@ public class MilkResults extends AppCompatActivity {
                             }
                             adapter = new MilkResultsAdapter(MilkResults.this, mData);
                             recyclerView.setAdapter(adapter);
+                            error_message_balance.setVisibility(View.GONE);
                         }
                     } catch (JSONException e) {
                         progressDialog.dismiss();
                         e.printStackTrace();
                         error_message_balance.setVisibility(View.VISIBLE);
-                        error_message_balance.setText(e.toString());
-//                         Toast.makeText(this, "Something went wrong, please try again" +e.toString(), Toast.LENGTH_SHORT).show();
+//                        error_message_balance.setText(e.toString());
+                         Toast.makeText(this, "Something went wrong, swipe down to try again" , Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
             progressDialog.dismiss();
             error_message_balance.setVisibility(View.VISIBLE);
-            error_message_balance.setText(error.toString());
-//            Toast.makeText(this, "Something went wrong, check your connection and try again please try again", Toast.LENGTH_SHORT).show();
+//            error_message_balance.setText(error.toString());
+            Toast.makeText(this, "Something went wrong, check your connection and please try again", Toast.LENGTH_SHORT).show();
 
         }) {
             protected Map<String, String> getParams() {
@@ -160,5 +164,11 @@ public class MilkResults extends AppCompatActivity {
     public void Clear() {
         mData.clear();
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        return;
     }
 }

@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -44,12 +45,12 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AddThings extends AppCompatActivity {
+//implements Spinner.OnItemSelectedListener
 
-
-    TextView chosentitle, selecteddate, iddAnimal, matookeid, milkid,IDEmployee,genderss;
+    TextView chosentitle, textseletegender, iddAnimal, matookeid, milkid,IDEmployee,genderss,textseletmilkttime,textseletgender;
     Spinner categorycattle, categorygoat, timesent, gender;
     Urls urls;
-    LinearLayout addanimalsoption, addmatookeoption, addmilkption,
+    LinearLayout addanimalsoption, addmatookeoption, addmilkption,li_ssoption,
             addemployeeoption, linear_pnumber, sendani, updateani, updateMatookes, addMatooke, addMilk, updateMilk,
     addEmployees ,updateEmployee;
     CalendarView calendermatooke;
@@ -63,7 +64,9 @@ public class AddThings extends AppCompatActivity {
     Dialog loadingUI;
     DatePickerDialog datePickerDialog;
     SessionManager sessionManager;
-    String getID, farmname;
+    String getID, farmname,finaltt;
+View vvvv,mmmm,ggggg;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -105,6 +108,10 @@ public class AddThings extends AppCompatActivity {
         addEmployees = findViewById(R.id.addEmployees);
         IDEmployee = findViewById(R.id.IDEmployee);
         genderss = findViewById(R.id.genderss);
+        ggggg = findViewById(R.id.ggggg);
+        textseletgender = findViewById(R.id.textseletgender);
+
+
 
 
         /*handle the incoming intents */
@@ -131,6 +138,8 @@ public class AddThings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 gender.setVisibility(View.VISIBLE);
+                ggggg.setVisibility(View.VISIBLE);
+                textseletgender.setVisibility(View.VISIBLE);
             }
         });
 
@@ -152,6 +161,8 @@ public class AddThings extends AppCompatActivity {
         iddAnimal = findViewById(R.id.iddAnimal);
         sendani = findViewById(R.id.sendani);
         updateani = findViewById(R.id.updateani);
+        textseletegender = findViewById(R.id.textseletegender);
+        vvvv = findViewById(R.id.vvvv);
 
 
         String wwe = getIntent().getStringExtra("checker");
@@ -166,6 +177,9 @@ public class AddThings extends AppCompatActivity {
                 linear_pnumber.setVisibility(View.GONE);
             }
             selectedGender.setVisibility(View.VISIBLE);
+            textseletegender.setVisibility(View.VISIBLE);
+            vvvv.setVisibility(View.VISIBLE);
+
             selectedGender.setText(getIntent().getStringExtra("gender"));
             sendani.setVisibility(View.GONE);
             updateani.setVisibility(View.VISIBLE);
@@ -178,6 +192,7 @@ public class AddThings extends AppCompatActivity {
                 if (selectedtypes.equals("Cattle")) {
                     categorycattle.setVisibility(View.VISIBLE);
                     categorygoat.setVisibility(View.GONE);
+                    Toast.makeText(AddThings.this, "kjkjkj", Toast.LENGTH_SHORT).show();
                 } else if (selectedtypes.equals("Goat")) {
                     categorygoat.setVisibility(View.VISIBLE);
                     categorycattle.setVisibility(View.GONE);
@@ -251,8 +266,11 @@ public class AddThings extends AppCompatActivity {
         updateMilk = findViewById(R.id.updateMilk);
         milkid = findViewById(R.id.milkid);
         selectedMilkTime = findViewById(R.id.selectedMilkTime);
+        textseletmilkttime = findViewById(R.id.textseletmilkttime);
+        mmmm = findViewById(R.id.mmmm);
 
-        /*handle the incoming matooke intents*/
+
+        /*handle the incoming milk intents*/
         String milkID = getIntent().getStringExtra("id");
         if (milkID != null && !milkID.isEmpty()) {
             total_litres.setText(getIntent().getStringExtra("total"));
@@ -261,8 +279,10 @@ public class AddThings extends AppCompatActivity {
             comment_milk.setText(getIntent().getStringExtra("comment"));
             diary_litres.setText(getIntent().getStringExtra("diary"));
             milkid.setText(getIntent().getStringExtra("id"));
-
+            addmatookeoption.setVisibility(View.GONE);
             selectedMilkTime.setVisibility(View.VISIBLE);
+
+
             updateMilk.setVisibility(View.VISIBLE);
             addMilk.setVisibility(View.GONE);
             timesent.setVisibility(View.GONE);
@@ -273,6 +293,8 @@ public class AddThings extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 timesent.setVisibility(View.VISIBLE);
+                mmmm.setVisibility(View.VISIBLE);
+                textseletmilkttime.setVisibility(View.VISIBLE);
             }
         });
 
@@ -308,60 +330,95 @@ public class AddThings extends AppCompatActivity {
         /**MATOOKE SECTION*/
         if (from != null && from.equals("Matooke")) {
             addmatookeoption.setVisibility(View.VISIBLE);
-            chosentitle.setText("Add matooke bunches");
+            chosentitle.setText("Add plantain bunches");
+
+        } else if ( from != null && from.equals("MatookeEdit")){
+            addmatookeoption.setVisibility(View.VISIBLE);
+            chosentitle.setText("Edit plantain records");
         }
 
         /**MILK SECTION*/
         if (from != null && from.equals("Milk")) {
             addmilkption.setVisibility(View.VISIBLE);
             chosentitle.setText("Add milked litres");
+        }else if ( from != null && from.equals("MilkEdit")){
+            addmilkption.setVisibility(View.VISIBLE);
+            chosentitle.setText("Edit milk records");
         }
 
 
-        /**MILK SECTION*/
+        /**Employees SECTION*/
         if (from != null && from.equals("Employees")) {
             addemployeeoption.setVisibility(View.VISIBLE);
+            chosentitle.setText("Add employee profile");
+        }else if ( from != null && from.equals("EmployeeEdit")){
+            addemployeeoption.setVisibility(View.VISIBLE);
+            chosentitle.setText("Edit employee profile");
         }
 
     }
 
+
+    /** handling spinners*/
+//    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//        selectedMilkTime.setText(timesent.getSelectedItem().toString());
+//        selectedGender .setText(categorycattle.getSelectedItem().toString());
+//
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//    }
+
+
     /*handle the going back part*/
     public void goBack(View view) {
 
-//        if (from.isEmpty() && from != null){
-//            Toast.makeText(this, "sapp", Toast.LENGTH_SHORT).show();
-//        }else {
-
-
         switch (from) {
-            case "Cattle": {
-                String type = "Cattle";
-                Intent gg = new Intent(AddThings.this, AnimalResults.class);
-                gg.putExtra("type", type);
-                startActivity(gg);
-                finish();
+            case "Animal": {
+
+                if (selectedtypes != null && selectedtypes.equals("Cattle")) {
+                    String type = "Cattle";
+                    Intent gg = new Intent(AddThings.this, AnimalResults.class);
+                    gg.putExtra("type", type);
+                    startActivity(gg);
+                    finish();
+
+                } else if (selectedtypes != null && selectedtypes.equals("Goat")) {
+                    String type = "Goat";
+                    Intent gg = new Intent(AddThings.this, AnimalResults.class);
+                    gg.putExtra("type", type);
+                    startActivity(gg);
+                    finish();
+
+                }
                 break;
             }
-            case "Goat": {
-                String type = "Goat";
-                Intent gg = new Intent(AddThings.this, AnimalResults.class);
-                gg.putExtra("type", type);
-                startActivity(gg);
-                finish();
-                break;
-            }
+
             case "Matooke":
+            case "MatookeEdit": {
                 startActivity(new Intent(AddThings.this, Matooke.class));
                 finish();
                 break;
+            }
             case "Milk":
+            case "MilkEdit": {
                 startActivity(new Intent(AddThings.this, MilkActivity.class));
                 finish();
                 break;
+            }
             case "Employees":
+            case "EmployeeEdit": {
                 startActivity(new Intent(AddThings.this, Employees.class));
                 finish();
                 break;
+            }
+//            case "Employees": {
+//                startActivity(new Intent(AddThings.this, Employees.class));
+//                finish();
+//                break;
+//            }
         }
 
 //    }
@@ -537,7 +594,7 @@ public class AddThings extends AppCompatActivity {
                     } catch (JSONException e) {
                         loadingUI.dismiss();
                         e.printStackTrace();
-                        Toast.makeText(this, "Something went wrong, please try again" + e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
                     }
                 }, error -> {
             loadingUI.dismiss();
@@ -552,11 +609,7 @@ public class AddThings extends AppCompatActivity {
                 params.put("tagnumber", tNo);
                 params.put("weight", wei);
                 params.put("checkere", ccc);
-//                if (!sgoat.isEmpty()){
                 params.put("gender", finalGg);
-//                }else {
-//                    params.put("gender", scattle);
-//                }
                 params.put("farmname", farmname);
                 return params;
             }
@@ -991,8 +1044,14 @@ public class AddThings extends AppCompatActivity {
         String dl = diary_litres.getText().toString().trim();
         String tl = total_litres.getText().toString().trim();
         String mmid = milkid.getText().toString().trim();
-        String tt = String.valueOf(timesent.getSelectedItem());
-        selectedMilkTime.setText(tt);
+
+        String tt = timesent.getSelectedItem().toString();
+        if (tt.equals("Select time")){
+             finaltt = selectedMilkTime.getText().toString();
+        }else {
+             finaltt = timesent.getSelectedItem().toString();
+        }
+//        selectedMilkTime.setText(tt);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.UPDATE_PROFILE,
                 response -> {
@@ -1033,7 +1092,7 @@ public class AddThings extends AppCompatActivity {
                 params.put("home", hl);
                 params.put("diary", dl);
                 params.put("comment", cm);
-                params.put("timesent", tt);
+                params.put("timesent", finaltt);
                 params.put("id", mmid);
                 params.put("checkere", "Milk");
                 return params;
@@ -1116,6 +1175,10 @@ finish();
         requestQueue.add(stringRequest);
     }
 
-
+    @Override
+    public void onBackPressed()
+    {
+        return;
+    }
 
 }
