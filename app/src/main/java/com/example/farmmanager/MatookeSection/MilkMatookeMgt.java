@@ -35,9 +35,9 @@ public class MilkMatookeMgt extends AppCompatActivity {
     public void openMatookeSection(View view) {
         startActivity(new Intent(MilkMatookeMgt.this, Matooke.class));
     }
-    @Override
-    public void onBackPressed()
-    {
-        return;
-    }
+//    @Override
+//    public void onBackPressed()
+//    {
+//        return;
+//    }
 }

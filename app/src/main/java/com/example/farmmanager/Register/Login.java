@@ -91,7 +91,6 @@ public class Login extends AppCompatActivity {
                                     intent.putExtra("username", fullname);
                                     startActivity(intent);
                                     finish();
-
                                 }
                                 loading.dismiss();
 
@@ -111,7 +110,7 @@ public class Login extends AppCompatActivity {
                 error -> {
                     loading.dismiss();
 //                    login.setVisibility(View.VISIBLE);
-                    Toast.makeText(Login.this, "login error please check your internet connection and try again ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "login error please check your internet connection and try again " + error.toString(), Toast.LENGTH_SHORT).show();
                 }) {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();

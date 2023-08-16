@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,7 +11,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -47,12 +45,12 @@ import java.util.Objects;
 public class AddThings extends AppCompatActivity {
 //implements Spinner.OnItemSelectedListener
 
-    TextView chosentitle, textseletegender, iddAnimal, matookeid, milkid,IDEmployee,genderss,textseletmilkttime,textseletgender;
-    Spinner categorycattle, categorygoat, timesent, gender;
+    TextView chosentitle, textseletegender, iddAnimal, matookeid, milkid, IDEmployee, genderss, textseletmilkttime, textseletgender;
+    Spinner categorycattle, categorygoat, timesent, gender, breed;
     Urls urls;
-    LinearLayout addanimalsoption, addmatookeoption, addmilkption,li_ssoption,
+    LinearLayout addanimalsoption, addmatookeoption, addmilkption, li_ssoption,
             addemployeeoption, linear_pnumber, sendani, updateani, updateMatookes, addMatooke, addMilk, updateMilk,
-    addEmployees ,updateEmployee;
+            addEmployees, updateEmployee;
     CalendarView calendermatooke;
     EditText total_bunches, username, age, home_litres, diary_litres, comment_milk,
             total_litres, contact, nextkincontact, address, nextkin, tagnumber, weight, parenttagnumber, role, selectedGender,
@@ -64,11 +62,11 @@ public class AddThings extends AppCompatActivity {
     Dialog loadingUI;
     DatePickerDialog datePickerDialog;
     SessionManager sessionManager;
-    String getID, farmname,finaltt;
-View vvvv,mmmm,ggggg;
+    String getID, farmname, finaltt;
+    View vvvv, mmmm, ggggg;
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,9 +141,8 @@ View vvvv,mmmm,ggggg;
             }
         });
 
-                /****
-                 * END EMPLOYEES HANDLE*/
-
+        /****
+         * END EMPLOYEES HANDLE*/
 
 
         /****
@@ -163,6 +160,7 @@ View vvvv,mmmm,ggggg;
         updateani = findViewById(R.id.updateani);
         textseletegender = findViewById(R.id.textseletegender);
         vvvv = findViewById(R.id.vvvv);
+        breed = findViewById(R.id.breed); /// add the breed option
 
 
         String wwe = getIntent().getStringExtra("checker");
@@ -191,10 +189,12 @@ View vvvv,mmmm,ggggg;
             public void onClick(View view) {
                 if (selectedtypes.equals("Cattle")) {
                     categorycattle.setVisibility(View.VISIBLE);
+                    breed.setVisibility(View.VISIBLE);
                     categorygoat.setVisibility(View.GONE);
                     Toast.makeText(AddThings.this, "kjkjkj", Toast.LENGTH_SHORT).show();
                 } else if (selectedtypes.equals("Goat")) {
                     categorygoat.setVisibility(View.VISIBLE);
+                    breed.setVisibility(View.GONE);
                     categorycattle.setVisibility(View.GONE);
                 }
 
@@ -313,6 +313,7 @@ View vvvv,mmmm,ggggg;
         /*find out which animal was selected and then show the drop options*/
         if (selectedtypes != null && selectedtypes.equals("Cattle")) {
             categorycattle.setVisibility(View.VISIBLE);
+            breed.setVisibility(View.VISIBLE);
             categorygoat.setVisibility(View.GONE);
             chosentitle.setText("Add cattle record");
             if (wwe != null && !wwe.isEmpty()) {
@@ -320,6 +321,7 @@ View vvvv,mmmm,ggggg;
             }
         } else if (selectedtypes != null && selectedtypes.equals("Goat")) {
             categorygoat.setVisibility(View.VISIBLE);
+            breed.setVisibility(View.GONE);
             chosentitle.setText("Add goat record");
             categorycattle.setVisibility(View.GONE);
             if (wwe != null && !wwe.isEmpty()) {
@@ -332,7 +334,7 @@ View vvvv,mmmm,ggggg;
             addmatookeoption.setVisibility(View.VISIBLE);
             chosentitle.setText("Add plantain bunches");
 
-        } else if ( from != null && from.equals("MatookeEdit")){
+        } else if (from != null && from.equals("MatookeEdit")) {
             addmatookeoption.setVisibility(View.VISIBLE);
             chosentitle.setText("Edit plantain records");
         }
@@ -341,7 +343,7 @@ View vvvv,mmmm,ggggg;
         if (from != null && from.equals("Milk")) {
             addmilkption.setVisibility(View.VISIBLE);
             chosentitle.setText("Add milked litres");
-        }else if ( from != null && from.equals("MilkEdit")){
+        } else if (from != null && from.equals("MilkEdit")) {
             addmilkption.setVisibility(View.VISIBLE);
             chosentitle.setText("Edit milk records");
         }
@@ -351,7 +353,7 @@ View vvvv,mmmm,ggggg;
         if (from != null && from.equals("Employees")) {
             addemployeeoption.setVisibility(View.VISIBLE);
             chosentitle.setText("Add employee profile");
-        }else if ( from != null && from.equals("EmployeeEdit")){
+        } else if (from != null && from.equals("EmployeeEdit")) {
             addemployeeoption.setVisibility(View.VISIBLE);
             chosentitle.setText("Edit employee profile");
         }
@@ -359,7 +361,9 @@ View vvvv,mmmm,ggggg;
     }
 
 
-    /** handling spinners*/
+    /**
+     * handling spinners
+     */
 //    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 //        selectedMilkTime.setText(timesent.getSelectedItem().toString());
 //        selectedGender .setText(categorycattle.getSelectedItem().toString());
@@ -538,6 +542,14 @@ View vvvv,mmmm,ggggg;
         String tNo = tagnumber.getText().toString().trim();
         String ptNo = parenttagnumber.getText().toString().trim();
         String wei = weight.getText().toString().trim();
+        String bbbr = "";
+
+        // check to see if the selected animal is cattle or goat and if its cattle .... then use the breed option
+        if (selectedtypes.equals("Cattle")) {
+            bbbr = String.valueOf(breed.getSelectedItem());
+        } else {
+            bbbr = "";
+        }
 
         /*check for gender*/
         String gg = "";
@@ -566,6 +578,7 @@ View vvvv,mmmm,ggggg;
         loadingUI.show();
 
         String finalGg = gg;
+        String finalBbbr = bbbr;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.SEND_ANIMAL_RESULTS,
                 response -> {
                     loadingUI.dismiss();
@@ -611,6 +624,7 @@ View vvvv,mmmm,ggggg;
                 params.put("checkere", ccc);
                 params.put("gender", finalGg);
                 params.put("farmname", farmname);
+                params.put("breed", finalBbbr);// animal breed
                 return params;
             }
         };
@@ -699,10 +713,10 @@ View vvvv,mmmm,ggggg;
                         String success = jsonObject.getString("success");
                         if (success.equals("1")) {
                             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-                            Toast.makeText(this, "time is "+ ts, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "time is " + ts, Toast.LENGTH_SHORT).show();
 
                             Intent cc = new Intent(AddThings.this, MilkResults.class);
-                            cc.putExtra("time",ts);
+                            cc.putExtra("time", ts);
                             startActivity(cc);
                             finish();
                         }
@@ -933,8 +947,8 @@ View vvvv,mmmm,ggggg;
                         if (success.equals("1")) {
                             loadingUI.dismiss();
                             Toast.makeText(getApplicationContext(), "Updated successful", Toast.LENGTH_SHORT).show();
-                            Intent cc = new Intent(AddThings.this,AnimalResults.class);
-                            cc.putExtra("type",selectedtypes);
+                            Intent cc = new Intent(AddThings.this, AnimalResults.class);
+                            cc.putExtra("type", selectedtypes);
                             startActivity(cc);
                             finish();
 
@@ -952,7 +966,7 @@ View vvvv,mmmm,ggggg;
                 },
                 error -> {
                     loadingUI.dismiss();
-                    Toast.makeText(getApplicationContext(), "Updated not successful, please check your internet connection and try again " +error.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Updated not successful, please check your internet connection and try again " + error.toString(), Toast.LENGTH_SHORT).show();
                 }
         ) {
             protected Map<String, String> getParams() {
@@ -1046,10 +1060,10 @@ View vvvv,mmmm,ggggg;
         String mmid = milkid.getText().toString().trim();
 
         String tt = timesent.getSelectedItem().toString();
-        if (tt.equals("Select time")){
-             finaltt = selectedMilkTime.getText().toString();
-        }else {
-             finaltt = timesent.getSelectedItem().toString();
+        if (tt.equals("Select time")) {
+            finaltt = selectedMilkTime.getText().toString();
+        } else {
+            finaltt = timesent.getSelectedItem().toString();
         }
 //        selectedMilkTime.setText(tt);
 
@@ -1134,8 +1148,8 @@ View vvvv,mmmm,ggggg;
                         if (success.equals("1")) {
                             loadingUI.dismiss();
                             Toast.makeText(getApplicationContext(), "Update successful", Toast.LENGTH_SHORT).show();
-startActivity(new Intent(AddThings.this,Employees.class));
-finish();
+                            startActivity(new Intent(AddThings.this, Employees.class));
+                            finish();
 
                         }
                         loadingUI.setCancelable(false);
@@ -1175,10 +1189,9 @@ finish();
         requestQueue.add(stringRequest);
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        return;
-    }
+//    @Override
+//    public void onBackPressed() {
+//        return;
+//    }
 
 }

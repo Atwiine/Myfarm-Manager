@@ -5,8 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/purple_light"
     tools:context=".MatookeSection.MilkMatookeMgt">
 
+    <com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="5dp"
+    android:id="@+id/top"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="0dp"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +57,7 @@
 
         </RelativeLayout>
     </RelativeLayout>
-
+    </com.google.android.material.card.MaterialCardView>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -66,7 +75,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_margin="10dp"
-                android:background="@drawable/bg_employe"
+                android:background="@color/purple_light"
                 >
 
                 <LinearLayout
@@ -100,7 +109,7 @@
                                 android:layout_centerVertical="true"
                                 android:layout_toEndOf="@id/aa1"
                                 android:fontFamily="@font/poppins_medium"
-                                android:text="Matooke\nmanagement"
+                                android:text="Plantain\nmanagement"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/purple_light"
     tools:context=".MainActivity">
 
     <androidx.core.widget.NestedScrollView
@@ -17,48 +18,76 @@
             android:orientation="vertical">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
+                android:orientation="vertical">
 
-                android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_alignParentEnd="true"
-                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@drawable/hexal1"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/rr"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="My"
+                    android:text="MyFarm"
                     android:textColor="@color/black"
-                    android:textSize="24sp" />
+                    android:textSize="20sp"
+                    android:visibility="gone" />
 
-                <TextView
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_centerVertical="true"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_toEndOf="@+id/rr"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Farm"
-                    android:textColor="@color/purple_700"
-                    android:textSize="20sp" />
-            </RelativeLayout>
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/hexal1"/>
+                    <TextView
+                        android:id="@+id/rr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="My"
+                        android:textColor="@color/black"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_toEndOf="@+id/rr"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="Farm"
+                        android:textColor="@color/purple_700"
+                        android:textSize="20sp" />
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="false"
                     android:layout_centerVertical="true"
                     android:layout_margin="10dp">
 
@@ -66,8 +95,9 @@
                         android:id="@+id/imgmessage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/searchs"
                         android:onClick="openSettings"
+                        android:src="@drawable/searchs"
+
                         />
 
                     <ImageView
@@ -83,12 +113,13 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="3dp">
 
                 <TextView
                     android:id="@+id/hellotxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Hello, "
@@ -96,33 +127,40 @@
                     android:textSize="28sp" />
 
                 <TextView
+                    android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/hellotxt"
-                    android:layout_marginStart="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_toEndOf="@id/hellotxt"
                     android:drawablePadding="10dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:text="   Manager"
-                    android:id="@+id/name"
-                    android:textColor="@color/black"
+                    android:text="Manager"
+                    android:textColor="@color/purple_7001"
                     android:textSize="25sp" />
+                <RelativeLayout
 
-                <com.airbnb.lottie.LottieAnimationView
-                    android:id="@+id/animationView"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_toEndOf="@id/name"
-                    android:visibility="visible"
-                    app:lottie_autoPlay="true"
-                    app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/waving" />
+
+                    android:background="@drawable/hexal1"
+                    >
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/animationView"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        android:visibility="visible"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/waving" />
+                </RelativeLayout>
+
 
             </RelativeLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -138,23 +176,23 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="150dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/bg_animal"
+                        android:layout_height="140dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/corner1"
                         android:onClick="openAnimalManagement">
 
                         <TextView
                             android:id="@+id/animal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Cattle &amp; Goats\nmanagement"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
+                            android:textColor="@color/purple_700"
+                            android:textSize="14sp" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -193,23 +231,22 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="150dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/bg_employe"
+                        android:layout_height="140dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/corner2"
                         android:onClick="openMatMilkManagement">
 
                         <TextView
                             android:id="@+id/employees"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Milk &amp; Matooke\nmanagement"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
+                            android:textColor="@color/purple_700"
+                            android:textSize="14sp" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -249,22 +286,22 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="150dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/bg_employe"
+                        android:layout_height="140dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/corner3"
                         android:onClick="openEmployeeManagement">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Employee\nmanagement"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
+                            android:textColor="@color/purple_700"
+                            android:textSize="14sp" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -290,22 +327,23 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_height="150dp"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/bg_employe"
+                        android:layout_height="140dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/corner4"
                         android:onClick="openChat">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="20dp"
                             android:layout_marginBottom="10dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Chat"
-                            android:textColor="@color/white"
-                            android:textSize="16sp" />
+                            android:textColor="@color/purple_700"
+                            android:textSize="14sp" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"

@@ -7,22 +7,30 @@
     android:orientation="vertical"
     tools:context=".AnimalSection.MilkActivity">
 
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        android:id="@+id/top"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_margin="10dp"
-        android:id="@+id/top"
         >
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:layout_centerInParent="true"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins_medium"
@@ -51,7 +59,7 @@
 
         </RelativeLayout>
     </RelativeLayout>
-
+    </com.google.android.material.card.MaterialCardView>
 
 
     <androidx.core.widget.NestedScrollView
@@ -73,7 +81,7 @@
          android:layout_height="match_parent"
          android:orientation="vertical"
          android:layout_margin="10dp"
-         android:background="@drawable/bg_employe"
+         android:background="@color/purple_light2"
          >
 
          <LinearLayout
@@ -180,7 +188,7 @@ android:layout_centerVertical="true"
                          android:fontFamily="@font/poppins_medium"
                          android:text="View today's records"
                          android:textColor="@color/black"
-                         android:textSize="14sp" />
+                         android:textSize="12sp" />
 
                      <ImageView
                          android:layout_width="50dp"
@@ -249,7 +257,7 @@ android:layout_centerVertical="true"
                              android:fontFamily="@font/poppins_medium"
                              android:text="Please select one\nof the timeslots"
                              android:textColor="@color/black"
-                             android:textSize="14sp" />
+                             android:textSize="12sp" />
 
                          <ImageView
                              android:layout_width="wrap_content"
@@ -280,7 +288,7 @@ android:layout_centerVertical="true"
                          android:onClick="openMilkMorning"
                          app:cardCornerRadius="5dp"
                          android:layout_margin="5dp"
-                         app:cardBackgroundColor="@color/blue"
+                         app:cardBackgroundColor="@color/purple_700"
                          >
                          <TextView
                              android:layout_width="wrap_content"
@@ -295,7 +303,7 @@ android:layout_centerVertical="true"
                              android:fontFamily="@font/poppins_medium"
                              android:text="Morning"
                              android:textColor="@color/white"
-                             android:textSize="14sp" />
+                             android:textSize="12sp" />
                      </com.google.android.material.card.MaterialCardView>
                      <com.google.android.material.card.MaterialCardView
                          android:layout_width="0dp"
@@ -305,7 +313,7 @@ android:layout_centerVertical="true"
                          app:cardCornerRadius="5dp"
                          android:onClick="openMilkAfternoon"
                          android:layout_margin="5dp"
-                         app:cardBackgroundColor="@color/blue"
+                         app:cardBackgroundColor="@color/purple_700"
                          >
                          <TextView
                              android:layout_width="wrap_content"
@@ -320,7 +328,7 @@ android:layout_centerVertical="true"
                              android:fontFamily="@font/poppins_medium"
                              android:text="Mid day"
                              android:textColor="@color/white"
-                             android:textSize="14sp" />
+                             android:textSize="12sp" />
                      </com.google.android.material.card.MaterialCardView>
                      <com.google.android.material.card.MaterialCardView
                          android:layout_width="0dp"
@@ -330,7 +338,7 @@ android:layout_centerVertical="true"
                          android:onClick="openMilkEvening"
                          app:cardCornerRadius="5dp"
                          android:layout_margin="5dp"
-                         app:cardBackgroundColor="@color/blue"
+                         app:cardBackgroundColor="@color/purple_700"
                          >
                          <TextView
                              android:layout_width="wrap_content"
@@ -345,7 +353,7 @@ android:layout_centerVertical="true"
                              android:fontFamily="@font/poppins_medium"
                              android:text="Evening"
                              android:textColor="@color/white"
-                             android:textSize="14sp" />
+                             android:textSize="12sp" />
                      </com.google.android.material.card.MaterialCardView>
                  </LinearLayout>
                  </LinearLayout>
@@ -387,7 +395,7 @@ android:layout_centerVertical="true"
                          android:fontFamily="@font/poppins_medium"
                          android:text="Over all records"
                          android:textColor="@color/black"
-                         android:textSize="14sp" />
+                         android:textSize="12sp" />
 
                      <ImageView
                          android:layout_width="50dp"
@@ -437,7 +445,7 @@ android:layout_centerVertical="true"
         android:layout_margin="10dp"
         app:cardElevation="5dp"
         android:id="@+id/addcard"
-        app:cardBackgroundColor="@color/blueoringnal"
+        app:cardBackgroundColor="@color/purple_700"
         app:cardCornerRadius="5dp"
         android:onClick="openAddMilk"
         android:layout_alignParentBottom="true"
@@ -456,7 +464,7 @@ android:layout_centerVertical="true"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Add milked litres"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
         </LinearLayout>

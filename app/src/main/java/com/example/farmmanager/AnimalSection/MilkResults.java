@@ -153,6 +153,9 @@ public class MilkResults extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("selectedtime", selectedtime);
                 params.put("farmname", farmname);
+                params.put("status", "no");
+                params.put("fromdate", "");
+                params.put("todate", " ");
                 return params;
             }
         };
@@ -166,9 +169,9 @@ public class MilkResults extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        return;
-    }
+//    @Override
+//    public void onBackPressed()
+//    {
+//        return;
+//    }
 }

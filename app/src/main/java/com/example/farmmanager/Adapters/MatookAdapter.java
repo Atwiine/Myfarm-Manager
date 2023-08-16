@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,58 +68,64 @@ public class MatookAdapter extends RecyclerView.Adapter<MatookAdapter.MilkViewHo
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                holder.linear_delete.setVisibility(View.VISIBLE);
+                final String reason = holder.reason.getText().toString();
                 final String bid = holder.id.getText().toString();
-                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
-                builder.setTitle("You are about to delete this record.")
-                        .setMessage("Are you sure you want to delete this record from your collection permanently?. Please note that once deleted, it cannot be undone")
-                        .setCancelable(false)
-                        .setIcon(R.drawable.ic_warning)
-                        .setPositiveButton("YES", (dialog, which) -> {
-                            StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.DELETE_FILES_URL,
-                                    response -> {
-                                        try {
-                                            Log.i("tagconvertstr", "[" + response + "]");
-                                            JSONObject object = new JSONObject(response);
-                                            String success = object.getString("success");
-                                            if (success.equals("1")) {
+
+                if (reason.isEmpty()) {
+                    holder.reason.setError("Reason required");
+                } else {
+                    android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context);
+                    builder.setTitle("You are about to delete this record.")
+                            .setMessage("Are you sure you want to delete this record from your collection permanently?. Please note that once deleted, it cannot be undone")
+                            .setCancelable(false)
+                            .setIcon(R.drawable.ic_warning)
+                            .setPositiveButton("YES", (dialog, which) -> {
+                                StringRequest stringRequest = new StringRequest(Request.Method.POST, urls.DELETE_FILES_URL,
+                                        response -> {
+                                            try {
                                                 Log.i("tagconvertstr", "[" + response + "]");
+                                                JSONObject object = new JSONObject(response);
+                                                String success = object.getString("success");
+                                                if (success.equals("1")) {
+                                                    Log.i("tagconvertstr", "[" + response + "]");
 
-                                                Toast.makeText(context, "Record deleted successfully,", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(context, Matooke.class);
-                                                context.startActivity(intent);
-                                                ((Activity) context).finish();
+                                                    Toast.makeText(context, "Record deleted successfully,", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(context, Matooke.class);
+                                                    context.startActivity(intent);
+                                                    ((Activity) context).finish();
+                                                }
+
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                                Toast.makeText(context, "Record not deleted, please try again ", Toast.LENGTH_LONG).show();
+
                                             }
+                                        }, error -> {
+                                    Toast.makeText(context, "Record not deleted, please check your network and try again", Toast.LENGTH_LONG).show();
+                                    dialog.dismiss();
 
+                                }) {
 
-                                        } catch (JSONException e) {
-                                            e.printStackTrace();
-                                            Toast.makeText(context, "Record not deleted, please try again ", Toast.LENGTH_LONG).show();
+                                    @Override
+                                    protected Map<String, String> getParams() {
+                                        Map<String, String> params = new HashMap<>();
+                                        params.put("id", bid);
+                                        params.put("from", "Matooke");
+                                        params.put("reason", reason);
+                                        return params;
 
-                                        }
-                                    }, error -> {
-                                Toast.makeText(context, "Record not deleted, please check your network and try again", Toast.LENGTH_LONG).show();
-                                dialog.dismiss();
-
-                            }) {
-
-                                @Override
-                                protected Map<String, String> getParams() {
-                                    Map<String, String> params = new HashMap<>();
-                                    params.put("id", bid);
-                                    params.put("from", "Matooke");
-                                    return params;
-
-                                }
-                            };
-                            RequestQueue requestQueue = Volley.newRequestQueue(context);
-                            requestQueue.add(stringRequest);
-                        })
-                        .setNegativeButton("NO", (dialog, which) -> dialog.dismiss());
-                //Creating dialog box
-                android.app.AlertDialog dialog = builder.create();
-                dialog.show();
-
+                                    }
+                                };
+                                RequestQueue requestQueue = Volley.newRequestQueue(context);
+                                requestQueue.add(stringRequest);
+                            })
+                            .setNegativeButton("NO", (dialog, which) -> dialog.dismiss());
+                    //Creating dialog box
+                    android.app.AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
 
         });
@@ -141,6 +149,8 @@ public class MatookAdapter extends RecyclerView.Adapter<MatookAdapter.MilkViewHo
     public class MilkViewHolder extends RecyclerView.ViewHolder {
 
         TextView total_bunches, id,date,edit,delete;
+        EditText reason;
+        LinearLayout linear_delete;
 
         public MilkViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -150,6 +160,8 @@ public class MatookAdapter extends RecyclerView.Adapter<MatookAdapter.MilkViewHo
             id = itemView.findViewById(R.id.id);
             edit = itemView.findViewById(R.id.edit);
             delete = itemView.findViewById(R.id.delete);
+            linear_delete = itemView.findViewById(R.id.linear_delete);
+            reason = itemView.findViewById(R.id.reason);
 
             /*EDITING OPTIONS */
             edit.setOnClickListener(new View.OnClickListener() {

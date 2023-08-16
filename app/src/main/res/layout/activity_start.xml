@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/purple_light"
     android:layout_height="match_parent"
     tools:context=".StartActivity">
 
@@ -34,7 +35,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:orientation="vertical"
-        app:cardCornerRadius="200dp"
+        app:cardCornerRadius="50dp"
         app:cardElevation="10dp"
         android:outlineAmbientShadowColor="@color/purple_200"
         >
@@ -54,7 +55,7 @@
             android:layout_centerHorizontal="true"
 android:visibility="gone"
             android:orientation="vertical"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="50dp"
             android:layout_margin="10dp"
             app:cardElevation="10dp"
             android:outlineAmbientShadowColor="@color/purple_200"

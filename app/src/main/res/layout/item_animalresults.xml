@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/purple_light"
     tools:context=".AnimalSection.AnimalManagement">
 
 
@@ -46,6 +47,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
+                        android:layout_marginTop="6dp"
                         >
                         <LinearLayout
                             android:layout_width="0dp"
@@ -60,7 +62,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="Tag number"
                                 android:textColor="@color/black"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/tagnumber"
@@ -70,7 +72,7 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:text="20-7A0"
                                 android:textColor="@color/black"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                             <TextView
                                 android:id="@+id/type"
                                 android:layout_width="wrap_content"
@@ -80,7 +82,7 @@
                                 android:text=""
                                 android:visibility="gone"
                                 android:textColor="@color/black"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="0dp"
@@ -97,7 +99,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="Parent tag number"
                                 android:textColor="@color/black"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
 
                             <TextView
                                 android:id="@+id/ptagnumber"
@@ -107,7 +109,7 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:text="20-7A0"
                                 android:textColor="@color/black"
-                                android:textSize="14sp" />
+                                android:textSize="12sp" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -125,8 +127,21 @@
                         android:text="20-7A0"
                         android:visibility="gone"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="start"
+                    >
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="start"
+                    >
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -135,7 +150,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Gender"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/gender"
@@ -145,32 +160,40 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="Bull"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
+                </LinearLayout>
 
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_margin="5dp"
-                        android:background="@color/brown"/>
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Weight (Kgs)"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:orientation="vertical"
+                        android:layout_gravity="start"
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Weight (Kgs)"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
 
-                    <TextView
-                        android:id="@+id/weight"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="180Kg"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="180Kg"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
 
                     <View
                         android:layout_width="match_parent"
@@ -180,21 +203,58 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_gravity="start"
-                        android:padding="5dp"
-                        android:layout_margin="5dp"
-
                         >
 
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:id="@+id/linear_breed"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="start"
+                            >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Breed type"
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/breed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_gravity="start"
+                            >
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
                             android:fontFamily="@font/poppins_semibold"
                             android:text="Date of entry"
                             android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/date"
@@ -203,8 +263,9 @@
                             android:fontFamily="@font/poppins_medium"
                             android:text="12/05/2022"
                             android:textColor="@color/black"
-                            android:textSize="14sp" />
-
+                            android:layout_marginStart="10dp"
+                            android:textSize="12sp" />
+                        </LinearLayout>
                         <TextView
                             android:id="@+id/id"
                             android:layout_width="wrap_content"
@@ -247,6 +308,44 @@
                             android:textSize="14sp" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:id="@+id/linear_delete"
+                        android:visibility="gone"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/brown"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Reason for deleting this record"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <EditText
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/reason"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="10"
+                            android:padding="4dp"
+                            android:background="@drawable/bg_edittext"
+                            android:hint="Enter reason for deleting this record"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textColorHint="@color/grey1"
+                            android:fontFamily="@font/poppins_medium"
+                            android:minLines="3"
+                            android:gravity="top|left"
+                            android:maxLines="15" />
+
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -270,8 +369,9 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:padding="10dp"
                             android:text="Edit"
+                            android:gravity="center"
                             android:textColor="@color/purple_700"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             app:drawableLeftCompat="@drawable/ic_baseline_edit_note_24" />
 
                         <TextView
@@ -284,14 +384,15 @@
                             android:layout_marginEnd="5dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:gravity="end"
+                            android:gravity="end|center"
                             android:padding="10dp"
                             android:text="Delete"
                             android:textColor="@color/redoringal"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             app:drawableLeftCompat="@drawable/ic_baseline_delete_24" />
                     </RelativeLayout>
                 </LinearLayout>
+
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="wrap_content"

@@ -2,10 +2,10 @@ package com.example.farmmanager.Modals;
 
 public class AnimalResultsModel {
 
-    String tagnumber, gender, id,date,weight,checker,parent_tagnumber,type;
+    String tagnumber, gender, id,date,weight,checker,parent_tagnumber,type,breed;
 
     public AnimalResultsModel(String tagnumber, String gender, String id, String date, String weight,
-                              String checker,String parent_tagnumber,String type) {
+                              String checker,String parent_tagnumber,String type, String breed) {
         this.tagnumber = tagnumber;
         this.gender = gender;
         this.id = id;
@@ -14,6 +14,7 @@ public class AnimalResultsModel {
         this.checker = checker;
         this.parent_tagnumber = parent_tagnumber;
         this.type = type;
+        this.breed = breed;
     }
 
     public String getTagnumber() {
@@ -78,5 +79,13 @@ public class AnimalResultsModel {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 }

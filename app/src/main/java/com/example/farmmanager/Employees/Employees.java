@@ -144,6 +144,9 @@ public class Employees extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("farmname", farmname);
+                params.put("status", "no");
+                params.put("fromdate", "");
+                params.put("todate", " ");
                 return params;
             }
         };
@@ -166,9 +169,9 @@ public class Employees extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    @Override
-    public void onBackPressed()
-    {
-        return;
-    }
+//    @Override
+//    public void onBackPressed()
+//    {
+//        return;
+//    }
 }

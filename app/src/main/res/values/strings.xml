@@ -24,4 +24,10 @@
         <item>Afternoon</item>
         <item>Evening</item>
     </string-array>
+    <string-array name="breed">
+        <item>Select animal breed</item>
+        <item>Exotic</item>
+        <item>Local</item>
+    </string-array>
+
 </resources>

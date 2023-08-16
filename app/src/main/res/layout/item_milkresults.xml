@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/purple_light"
     tools:context=".AnimalSection.AnimalManagement">
 
 
@@ -20,7 +21,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-
             >
             <RelativeLayout
                 android:id="@+id/relmorning"
@@ -78,27 +78,32 @@
                     android:textColor="@color/white"
                     android:textSize="12sp" />
             </RelativeLayout>
-            <RelativeLayout
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_margin="10dp">
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
                     android:orientation="vertical">
-
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Total litres collected"
+                        android:text="Total litres "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/total_litres"
@@ -108,22 +113,29 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="200"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="1dp"
                         android:background="@color/brown"
                         android:layout_margin="5dp"
                         />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="Home consumption litres"
+                        android:text="Home (Litres)"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/home_litres"
@@ -133,38 +145,61 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="20"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="1dp"
                         android:background="@color/brown"
                         android:layout_margin="5dp"
                         />
-                    <TextView
-                        android:layout_width="wrap_content"
+                </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Litres taken to the diary "
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Diary (Litres)"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
 
-                    <TextView
-                        android:id="@+id/diary_litres"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="180"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/brown"
-                        android:layout_margin="5dp"
-                        />
+                        <TextView
+                            android:id="@+id/diary_litres"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="180"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/brown"
+                            android:layout_margin="5dp"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -172,7 +207,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Milking time"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/timesent"
@@ -182,13 +217,60 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="180"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/brown"
                         android:layout_margin="5dp"
                         />
+                </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Date"
+                            android:layout_marginStart="10dp"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="12/05/2022"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:visibility="gone" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/brown"
+                            android:layout_margin="5dp"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/linear_comment"
                         android:layout_width="match_parent"
@@ -217,54 +299,44 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:id="@+id/linear_delete"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_margin="5dp"
-                        android:orientation="horizontal"
-                        android:padding="10dp">
-
+                        android:orientation="vertical">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/brown"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-
-                            android:layout_gravity="end"
+                            android:layout_marginStart="10dp"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="Date"
+                            android:text="Reason for deleting this record"
                             android:textColor="@color/black"
-                            android:textSize="13sp" />
+                            android:textSize="14sp" />
 
-                        <TextView
-                            android:id="@+id/date"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
+                        <EditText
                             android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="12/05/2022"
+                            android:id="@+id/reason"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lines="10"
+                            android:padding="4dp"
+                            android:background="@drawable/bg_edittext"
+                            android:hint="Enter reason for deleting this record"
                             android:textColor="@color/black"
-                            android:textSize="13sp" />
-
-                        <TextView
-                            android:id="@+id/id"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text=""
-                            android:textColor="@color/white"
                             android:textSize="14sp"
-                            android:visibility="gone" />
-
+                            android:textColorHint="@color/grey1"
+                            android:fontFamily="@font/poppins_medium"
+                            android:minLines="3"
+                            android:gravity="top|left"
+                            android:maxLines="15" />
 
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/brown"
-                        android:layout_margin="5dp"
-                        />
+
                     <RelativeLayout
                         android:id="@+id/linear_manager"
                         android:layout_width="match_parent"
@@ -283,8 +355,9 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:padding="10dp"
                             android:text="Edit"
+                            android:gravity="center"
                             android:textColor="@color/purple_700"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             app:drawableLeftCompat="@drawable/ic_baseline_edit_note_24" />
 
                         <TextView
@@ -297,11 +370,11 @@
                             android:layout_marginEnd="5dp"
                             android:layout_marginBottom="5dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:gravity="end"
+                            android:gravity="end|center"
                             android:padding="10dp"
                             android:text="Delete"
                             android:textColor="@color/redoringal"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             app:drawableLeftCompat="@drawable/ic_baseline_delete_24" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -334,12 +407,7 @@
                         android:textColor="@color/white"
                         android:textSize="14sp" />
                 </com.google.android.material.card.MaterialCardView>
-            </RelativeLayout>
-
-
         </LinearLayout>
-
-
     </com.google.android.material.card.MaterialCardView>
 
 

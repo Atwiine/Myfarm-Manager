@@ -102,10 +102,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Toast.makeText(this, "Status check failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Status check failed" , Toast.LENGTH_SHORT).show();
                     }
                 },
-
+//                + e.toString()
                 error -> {
                     Toast.makeText(MainActivity.this, "Status check failed", Toast.LENGTH_SHORT).show();
                 }) {

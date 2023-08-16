@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
+    android:background="@color/purple_light"
     android:layout_height="match_parent"
     tools:context=".AnimalSection.AnimalResults">
 
@@ -12,9 +13,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
   >
-
-    <RelativeLayout
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
         android:id="@+id/top"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        >
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -56,11 +63,12 @@
 
         </RelativeLayout>
     </RelativeLayout>
-
+    </com.google.android.material.card.MaterialCardView>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/top"
+        android:layout_marginTop="10dp"
         android:layout_above="@+id/lll"
         android:id="@+id/scss"
        >
@@ -71,13 +79,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.9dp"
-                android:layout_margin="10dp"
-                android:background="@color/black"
-                android:layout_gravity="center"/>
 
             <RelativeLayout
                 android:id="@+id/show_balance"
@@ -133,7 +134,6 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="65dp"
-
         android:layout_alignParentBottom="true"
         android:id="@+id/lll"
         app:cardElevation="10dp"
@@ -142,16 +142,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/top"
+            android:background="@color/purple_light2"
             android:orientation="vertical"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             >
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@color/black"/>
+
 
             <RelativeLayout
                 android:layout_width="wrap_content"

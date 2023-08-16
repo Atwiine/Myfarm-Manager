@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/purple_light"
     tools:context=".AnimalSection.AnimalManagement">
 
 
@@ -39,9 +40,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
                     android:orientation="horizontal">
-
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -49,7 +54,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Names: "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/id"
@@ -70,14 +75,15 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="144"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -86,7 +92,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Phone: "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/phone"
@@ -96,21 +102,25 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="344567565454"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
-
+                </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/brown"
-                    android:layout_margin="5dp"
+                    android:layout_margin="0dp"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
                     android:orientation="horizontal">
-
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -118,7 +128,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Age: "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/age"
@@ -128,7 +138,33 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="123"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="Gender: "
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/gender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="sdsdsd"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -137,37 +173,25 @@
                     android:layout_marginTop="9dp"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="Gender: "
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
 
-                    <TextView
-                        android:id="@+id/gender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:fontFamily="@font/poppins_medium"
-                        android:text="sdsdsd"
-                        android:textColor="@color/black"
-                        android:textSize="14sp" />
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/brown"
-                    android:layout_margin="5dp"
+                    android:layout_margin="0dp"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="0dp"
                     android:orientation="horizontal">
-
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -175,7 +199,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Address: "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/address"
@@ -185,14 +209,16 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="assddds"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                        android:textSize="12sp" />
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -201,7 +227,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Role: "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/role"
@@ -211,21 +237,26 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="assddds"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
-
+                </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/brown"
-                    android:layout_margin="5dp"
+                    android:layout_margin="0dp"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="0dp"
                     android:orientation="horizontal">
-
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -233,7 +264,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Next of kin: "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/nextofkin"
@@ -243,14 +274,15 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="assddds"
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="9dp"
-                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -259,7 +291,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="Contact of next of kin: "
                         android:textColor="@color/black"
-                        android:textSize="14sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/contactnextofkim"
@@ -269,13 +301,52 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="assddds"
                         android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/linear_delete"
+                    android:visibility="gone"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_margin="0dp"
+                        android:background="@color/brown"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Reason for deleting this record"
+                        android:textColor="@color/black"
                         android:textSize="14sp" />
+
+                    <EditText
+                        android:layout_marginStart="10dp"
+                        android:id="@+id/reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="10"
+                        android:padding="4dp"
+                        android:background="@drawable/bg_edittext"
+                        android:hint="Enter reason for deleting this record"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textColorHint="@color/grey1"
+                        android:fontFamily="@font/poppins_medium"
+                        android:minLines="3"
+                        android:gravity="top|left"
+                        android:maxLines="15" />
+
                 </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/brown"
-                    android:layout_margin="5dp"
+                    android:layout_margin="0dp"
                     />
                 <RelativeLayout
                     android:id="@+id/linear_manager"
@@ -294,9 +365,10 @@
                         android:layout_marginBottom="5dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:padding="10dp"
+                        android:gravity="center"
                         android:text="Edit"
                         android:textColor="@color/purple_700"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:drawableLeftCompat="@drawable/ic_baseline_edit_note_24" />
 
                     <TextView
@@ -309,11 +381,11 @@
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
                         android:fontFamily="@font/poppins_medium"
-                        android:gravity="end"
+                        android:gravity="end|center"
                         android:padding="10dp"
                         android:text="Delete"
                         android:textColor="@color/redoringal"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:drawableLeftCompat="@drawable/ic_baseline_delete_24" />
                 </RelativeLayout>
 

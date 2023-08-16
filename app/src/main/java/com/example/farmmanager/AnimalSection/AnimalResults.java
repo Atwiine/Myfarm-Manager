@@ -130,9 +130,10 @@ public class AnimalResults extends AppCompatActivity {
                                 String totals = inputsObjects.getString("total");
                                 total.setText(totals);
                                 String parent_tagnumber = inputsObjects.getString("parent_tagnumber");
+                                String breed = inputsObjects.getString("breed");
 
                                 AnimalResultsModel inputsModel =
-                                        new AnimalResultsModel(tagnumber, gender, id,date,weight,checker,parent_tagnumber,type
+                                        new AnimalResultsModel(tagnumber, gender, id,date,weight,checker,parent_tagnumber,type,breed
                                         );
                                 mData.add(inputsModel);
                             }
@@ -157,7 +158,10 @@ public class AnimalResults extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("selectedtype", selectedtype);
+                params.put("status", "no");
                 params.put("farmname", farmname);
+                params.put("fromdate", "");
+                params.put("todate", " ");
                 return params;
             }
         };

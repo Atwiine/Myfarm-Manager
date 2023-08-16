@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="blueoringnal2">#FFB300</color>
+    <color name="brown4">#E80C07</color>
+    <color name="brown3">#04A11D</color>
     <color name="purple_200">#04A11D</color>
     <color name="purple_500">#04A11D</color>
     <color name="purple_700">#04A11D</color>
-    <color name="purple_7001">#3200C853</color>
-    <color name="purple_7002">#EE1F3227</color>
-    <color name="teal_200">#04A11D</color>
-    <color name="teal_700">#04A11D</color>
+    <color name="purple_7001">#AB00C853</color>
+    <color name="purple_light">#ABE7F4EC</color>
+    <color name="purple_light2">#ABD2EFDD</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey1">#8F8C8C</color>
     <color name="grey2">#ECECEC</color>
-    <color name="grey3">#2F615F5F</color>
+    <color name="grey3">#2F00ED00</color>
     <color name="brown">#04A11D</color>
-    <color name="brown4">#E80C07</color>
-    <color name="brown3">#04A11D</color>
     <color name="brown2">#7ECCA784</color>
-    <color name="blue">#04A11D</color>
-    <color name="blueoringnal">#039F1D</color>
-    <color name="blueoringnal2">#FFB300</color>
-    <color name="red">#3CF50057</color>
+    <color name="blue">#6A2979FF</color>
+    <color name="blueoringnal">#2979FF</color>
+    <color name="red">#F50057</color>
+    <color name="redlight">#ABEFC2C2</color>
     <color name="redoringal">#FF1744</color>
-
+    <color name="purple_7002">#035A1A</color>
     <color name="dot_light_screen4">#590584</color>
+    <color name="blur">#A1FEFFFE</color>
 </resources>

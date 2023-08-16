@@ -1,18 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
 
     <!-- tools:context=".Preferences.SettingsActivity"-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_700">
+        android:background="@color/purple_7002">
 
-        <RelativeLayout
+        <LinearLayout
+android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -20,14 +35,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
                 android:fontFamily="@font/poppins_medium"
                 android:text="Settings"
+                android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Pull down to close settings"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
 
-        </RelativeLayout>
+
+        </LinearLayout>
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -46,15 +73,7 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Pull down to close settings"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="14sp" />
+
 
 
             <LinearLayout
@@ -66,13 +85,23 @@
                 android:focusable="true"
                 android:orientation="horizontal">
 
-
-                <de.hdodenhof.circleimageview.CircleImageView
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/linear_img1"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
                     android:layout_margin="10dp"
-                    android:src="@drawable/logo1" />
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="5dp"
 
+                    >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo1" />
+                </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -88,7 +117,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:text="My account"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
 
@@ -104,7 +133,7 @@
                             android:fontFamily="@font/poppins_medium"
                             android:text="contact"
                             android:textColor="@color/black"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                     </RelativeLayout>
 
@@ -123,39 +152,179 @@
                 android:layout_height="1dp"
                 android:background="@color/purple_700" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                app:cardElevation="1dp"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/grey2"
-                app:cardCornerRadius="5dp"
-                >
-
             <LinearLayout
-                android:id="@+id/linear_logout"
+                android:id="@+id/linear_accounthelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:layout_margin="10dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:orientation="horizontal">
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
                     android:layout_margin="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Logout"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent"
+                    >
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/question"
+                        android:scaleType="centerCrop"
+                        />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/accounthelp"
+                    android:visibility="visible">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="For inquires, reach us on"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="40dp"
+                                app:cardElevation="1dp"
+                                android:layout_margin="0dp"
+                                android:id="@+id/call"
+                                app:cardCornerRadius="5dp"
+
+                                android:layout_gravity="center"
+                                >
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:background="@color/purple_7002"
+                                    android:layout_height="match_parent"
+                                    android:visibility="visible">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/poppins_medium"
+                                        android:text="Call: 078888888"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+
+                                </RelativeLayout>
+                            </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.card.MaterialCardView
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                app:cardElevation="1dp"
+                                android:id="@+id/message"
+                                android:visibility="gone"
+                                android:layout_margin="10dp"
+                                app:cardBackgroundColor="@color/purple_7002"
+                                app:cardCornerRadius="5dp"
+                                >
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:visibility="visible">
+
+                                    <TextView
+
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/poppins_medium"
+                                        android:text="Send message"
+                                        android:textColor="@color/white"
+                                        android:textSize="14sp" />
+
+                                </RelativeLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
             </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/purple_700" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal">
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:cardElevation="1dp"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="5dp"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/linear_logout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/purple_7002"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/logout"
+                            android:padding="4dp"
+                            android:layout_gravity="center_vertical"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Logout"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
@@ -171,4 +340,7 @@
         <include layout="@layout/activity_bottomnav" />
     </RelativeLayout>
 
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>
+

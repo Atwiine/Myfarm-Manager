@@ -36,10 +36,10 @@ public class AnimalManagement extends AppCompatActivity {
         gg.putExtra("type",type);
         startActivity(gg);
     }
-    @Override
-    public void onBackPressed()
-    {
-        return;
-    }
+//    @Override
+//    public void onBackPressed()
+//    {
+//        return;
+//    }
 
 }

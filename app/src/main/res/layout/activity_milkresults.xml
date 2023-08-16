@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
+    android:background="@color/purple_light"
     android:layout_height="match_parent"
     tools:context=".AnimalSection.MilkResults">
 <RelativeLayout
@@ -12,23 +13,32 @@
     android:orientation="vertical"
     >
 
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        android:id="@+id/top"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:id="@+id/top"
-        >
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
-            android:layout_centerInParent="true"
             android:fontFamily="@font/poppins_medium"
             android:text="Milk management"
             android:textColor="@color/black"
@@ -40,28 +50,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_margin="10dp"
-            android:onClick="goBack"
             android:layout_centerVertical="true"
-            >
+            android:layout_margin="10dp"
+            android:onClick="goBack">
 
             <ImageView
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
-                android:id="@+id/back"
-                android:padding="10dp"
                 android:background="@drawable/bg_employe"
-                />
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
 
         </RelativeLayout>
     </RelativeLayout>
-
+    </com.google.android.material.card.MaterialCardView>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/top"
-
+android:layout_marginTop="10dp"
         android:layout_above="@+id/eerr"
        >
 
@@ -157,26 +165,35 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/eerr"
+        app:cardElevation="10dp"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:orientation="horizontal"
-android:id="@+id/eerr"
+        android:background="@color/purple_light2"
         android:layout_alignParentBottom="true"
         >
 
 
         <TextView
+            android:id="@+id/tt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins_semibold"
             android:text="Total records"
             android:textColor="@color/black"
             android:textSize="14sp"
-            android:layout_margin="10dp"
-            android:layout_centerVertical="true"
-            android:id="@+id/tt"
             android:visibility="visible" />
 
         <TextView
@@ -194,5 +211,6 @@ android:id="@+id/eerr"
             android:visibility="visible" />
 
     </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

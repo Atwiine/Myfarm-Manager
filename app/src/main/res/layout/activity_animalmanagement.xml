@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/purple_light"
     tools:context=".AnimalSection.AnimalManagement">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        android:id="@+id/top"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,7 +60,7 @@
 
         </RelativeLayout>
     </RelativeLayout>
-
+    </com.google.android.material.card.MaterialCardView>
  <androidx.core.widget.NestedScrollView
      android:layout_width="match_parent"
      android:layout_height="match_parent"
@@ -67,7 +78,7 @@
          android:layout_height="match_parent"
          android:orientation="vertical"
          android:layout_margin="10dp"
-         android:background="@drawable/bg_animal"
+         android:background="@color/purple_light"
          >
 
          <LinearLayout
@@ -103,7 +114,7 @@
                          android:fontFamily="@font/poppins_medium"
                          android:text="Cattle\nmanagement"
                          android:textColor="@color/black"
-                         android:textSize="14sp" />
+                         android:textSize="12sp" />
 
                      <ImageView
                          android:layout_width="50dp"
@@ -174,7 +185,7 @@ android:layout_centerVertical="true"
                          android:fontFamily="@font/poppins_medium"
                          android:text="Goats\nmanagement"
                          android:textColor="@color/black"
-                         android:textSize="14sp" />
+                         android:textSize="12sp" />
 
                      <ImageView
                          android:layout_width="50dp"

@@ -4,9 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/purple_light"
+    android:orientation="vertical"
     tools:context=".MatookeSection.AddThings">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        android:id="@+id/top"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="0dp"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/chosentitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Add employees"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:onClick="goBack">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_animal"
+                android:padding="10dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,61 +73,13 @@
 
             >
 
-            <RelativeLayout
-                android:id="@+id/top"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/chosentitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:text="Add employees"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="10dp"
-                    android:onClick="goBack">
-
-                    <ImageView
-                        android:id="@+id/back"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/bg_employe"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
-
-                </RelativeLayout>
-            </RelativeLayout>
-
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 app:cardCornerRadius="5dp"
-<<<<<<< HEAD
-                app:cardElevation="10dp">
-=======
                 app:cardElevation="0dp">
->>>>>>> bcaf00f (v4)
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -86,11 +92,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:padding="10dp"
-<<<<<<< HEAD
-                        android:visibility="visible">
-=======
                         android:visibility="gone">
->>>>>>> bcaf00f (v4)
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -111,27 +113,21 @@
                             android:src="@drawable/ic_baseline_bubble_chart_24"
                             android:visibility="gone" />
 
-<<<<<<< HEAD
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-=======
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Employee names"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Employee's name"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:errorEnabled="true">
->>>>>>> bcaf00f (v4)
+                            android:layout_height="wrap_content">
 
 
                             <EditText
@@ -140,23 +136,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Names"
-                                android:padding="20dp"
                                 android:fontFamily="@font/poppins_medium"
+                                android:hint="Names"
                                 android:inputType="text"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Names"
-                                android:inputType="text"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -164,14 +149,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Employee age"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Employee's age"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -182,24 +167,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Age"
                                 android:fontFamily="@font/poppins_medium"
+                                android:hint="Age"
                                 android:inputType="number"
-                                android:padding="20dp"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Age"
-                                android:inputType="number"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -207,20 +180,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Employee gender"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Employee's gender"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-
-<<<<<<< HEAD
-=======
                             <EditText
                                 android:id="@+id/genderss"
                                 android:layout_width="match_parent"
@@ -231,52 +201,59 @@
                                 android:fontFamily="@font/poppins_medium"
                                 android:hint=""
                                 android:inputType="text"
-                                android:padding="20dp"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black"
                                 android:visibility="gone" />
 
->>>>>>> bcaf00f (v4)
+                            <TextView
+                                android:id="@+id/textseletgender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Edit employee's gender"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <View
+                                android:id="@+id/ggggg"
+                                android:layout_width="40dp"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@color/black"
+                                android:visibility="gone" />
+
                             <Spinner
                                 android:id="@+id/gender"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                                 android:layout_margin="10dp"
                                 android:entries="@array/gender"
                                 android:isScrollContainer="true"
-                                android:padding="20dp"
-=======
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
-                                android:background="@drawable/bg_edittext"
-                                android:entries="@array/gender"
-                                android:isScrollContainer="true"
                                 android:padding="15dp"
->>>>>>> bcaf00f (v4)
+                                android:background="@drawable/bg_edittext"
                                 android:spinnerMode="dialog"
                                 android:tag="Cattle"
                                 android:visibility="visible" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
-<<<<<<< HEAD
-                        <com.google.android.material.textfield.TextInputLayout
-=======
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Employee phone number"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Employee's phone number"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
-
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -287,24 +264,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Contact"
-                                android:padding="20dp"
                                 android:fontFamily="@font/poppins_medium"
+                                android:hint="Contact"
                                 android:inputType="number"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Contact"
-                                android:inputType="number"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -312,14 +277,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Employee address"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Employee's address"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -330,23 +295,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Address"
-                                android:padding="20dp"
                                 android:fontFamily="@font/poppins_medium"
+                                android:hint="Address"
                                 android:inputType="text"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Address"
-                                android:inputType="text"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -354,14 +308,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Employee role"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Employee's role"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -372,23 +326,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Role"
-                                android:padding="20dp"
                                 android:fontFamily="@font/poppins_medium"
+                                android:hint="Role"
                                 android:inputType="text"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Role"
-                                android:inputType="text"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -396,14 +339,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Employee next of kin"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Employee's next of kin"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -414,24 +357,12 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Next of kin"
-                                android:padding="20dp"
                                 android:fontFamily="@font/poppins_medium"
+                                android:hint="Next of kin"
                                 android:inputType="text"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Next of kin"
-                                android:inputType="text"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
@@ -439,14 +370,14 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="Contact next of kin"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Contact of Next of kin"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -457,32 +388,21 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Contact of Next of kin"
-                                android:padding="20dp"
                                 android:fontFamily="@font/poppins_medium"
+                                android:hint="Contact of Next of kin"
                                 android:inputType="number"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
-=======
-
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Contact of Next of kin"
-                                android:inputType="number"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
->>>>>>> bcaf00f (v4)
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                         <LinearLayout
-<<<<<<< HEAD
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/bg_employe"
-android:onClick="sendEmployees"
+
+
                             android:orientation="vertical">
 
                             <com.google.android.material.card.MaterialCardView
@@ -492,6 +412,7 @@ android:onClick="sendEmployees"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginEnd="10dp"
                                 android:layout_marginBottom="10dp"
+                                android:visibility="gone"
                                 app:cardBackgroundColor="@color/blueoringnal"
                                 app:cardCornerRadius="26dp"
                                 app:cardElevation="8dp">
@@ -503,89 +424,52 @@ android:onClick="sendEmployees"
                                     android:padding="5dp"
                                     android:src="@drawable/ic_baseline_navigate_next_24" />
                             </com.google.android.material.card.MaterialCardView>
-=======
-                            android:id="@+id/addEmployees"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:orientation="vertical">
 
-                            <com.google.android.material.button.MaterialButton
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:minWidth="200dp"
-                                android:text="Submit"
-                                android:onClick="sendEmployees"
-                                android:textAllCaps="false" />
-
-                            <!--                            <com.google.android.material.card.MaterialCardView-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_margin="5dp"-->
-                            <!--                                app:cardBackgroundColor="@color/blueoringnal"-->
-                            <!--                                app:cardCornerRadius="5dp"-->
-                            <!--                                app:cardElevation="8dp">-->
-
-                            <!--                                <TextView-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:layout_gravity="center"-->
-                            <!--                                    android:layout_margin="10dp"-->
-                            <!--                                    android:fontFamily="@font/poppins_medium"-->
-                            <!--                                    android:text="Submit"-->
-                            <!--                                    android:textColor="@color/white"-->
-                            <!--                                    android:textSize="14sp" />-->
-                            <!--                            </com.google.android.material.card.MaterialCardView>-->
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/updateEmployee"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:orientation="vertical"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:id="@+id/IDEmployee"
-                                android:layout_width="match_parent"
+                            <LinearLayout
+                                android:id="@+id/addEmployees"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:layout_margin="10dp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text=""
-                                android:textColor="@color/white"
-                                android:textSize="14sp"
-                                android:visibility="gone" />
+                                android:orientation="vertical">
 
-                            <com.google.android.material.button.MaterialButton
-                                android:layout_width="200dp"
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:minWidth="200dp"
+                                    android:onClick="sendEmployees"
+                                    android:text="Submit"
+                                    android:textAllCaps="false" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/updateEmployee"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:minWidth="200dp"
-                                android:text="Update"
-                                android:onClick="updateEmployees"
-                                android:textAllCaps="false" />
+                                android:layout_gravity="center"
+                                android:orientation="vertical"
+                                android:visibility="gone">
 
+                                <TextView
+                                    android:id="@+id/IDEmployee"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_margin="10dp"
+                                    android:fontFamily="@font/poppins_medium"
+                                    android:text=""
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:visibility="gone" />
 
-                            <!--                            <com.google.android.material.card.MaterialCardView-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_margin="5dp"-->
-                            <!--                                app:cardBackgroundColor="@color/blueoringnal"-->
-                            <!--                                app:cardCornerRadius="5dp"-->
-                            <!--                                app:cardElevation="8dp">-->
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:minWidth="200dp"
+                                    android:onClick="updateEmployees"
+                                    android:text="Update"
+                                    android:textAllCaps="false" />
 
-                            <!--                                <TextView-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:layout_gravity="center"-->
-                            <!--                                    android:layout_margin="10dp"-->
-                            <!--                                    android:fontFamily="@font/poppins_medium"-->
-                            <!--                                    android:text="Update"-->
-                            <!--                                    android:textColor="@color/white"-->
-                            <!--                                    android:textSize="14sp" />-->
-                            <!--                            </com.google.android.material.card.MaterialCardView>-->
->>>>>>> bcaf00f (v4)
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -618,11 +502,29 @@ android:onClick="sendEmployees"
                             android:src="@drawable/ic_baseline_bubble_chart_24"
                             android:visibility="gone" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Animal tag number"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <TextView
+                            android:id="@+id/iddAnimal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text=""
+                            android:textSize="14sp"
+                            android:visibility="gone" />
                         <com.google.android.material.textfield.TextInputLayout
-<<<<<<< HEAD
-=======
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -633,53 +535,30 @@ android:onClick="sendEmployees"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-=======
-
->>>>>>> bcaf00f (v4)
                                 android:hint="Tag number"
                                 android:inputType="number"
-                                android:padding="20dp"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
                         </com.google.android.material.textfield.TextInputLayout>
 
-<<<<<<< HEAD
-                        <com.google.android.material.textfield.TextInputLayout
-=======
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
                             android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_semibold"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="Animal gender"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
-                        <TextView
-                            android:id="@+id/iddAnimal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text=""
-                            android:textSize="14sp"
-                            android:visibility="gone" />
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+<!--                        <com.google.android.material.textfield.TextInputLayout-->
+<!--                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content">-->
 
                             <!--going to first check will option was selected and then show the select options-->
-<<<<<<< HEAD
-=======
-
-
                             <EditText
                                 android:id="@+id/selectedGender"
                                 android:layout_width="match_parent"
@@ -690,25 +569,40 @@ android:onClick="sendEmployees"
                                 android:focusable="false"
                                 android:hint=""
                                 android:inputType="text"
-                                android:padding="20dp"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black"
                                 android:visibility="gone" />
+                            <TextView
+                                android:id="@+id/textseletegender"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Edit employee's gender"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
 
->>>>>>> bcaf00f (v4)
+                            <View
+                                android:id="@+id/vvvv"
+                                android:layout_width="40dp"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@color/black"
+                                android:visibility="gone" />
+
+
                             <Spinner
                                 android:id="@+id/categorycattle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                                 android:layout_margin="10dp"
-=======
-                                android:layout_marginStart="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:background="@drawable/bg_edittext"
->>>>>>> bcaf00f (v4)
                                 android:entries="@array/categoryCattle"
                                 android:isScrollContainer="true"
-                                android:padding="20dp"
+                                android:padding="13dp"
+                                android:background="@drawable/bg_edittext"
                                 android:spinnerMode="dialog"
                                 android:tag="Cattle"
                                 android:visibility="visible" />
@@ -717,37 +611,29 @@ android:onClick="sendEmployees"
                                 android:id="@+id/categorygoat"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                                 android:layout_margin="10dp"
-=======
-                                android:layout_marginStart="10dp"
-                                android:background="@drawable/bg_edittext"
->>>>>>> bcaf00f (v4)
                                 android:entries="@array/categoryGoat"
                                 android:isScrollContainer="true"
                                 android:padding="20dp"
                                 android:spinnerMode="dialog"
+                                android:background="@drawable/bg_edittext"
                                 android:tag="type of materials"
                                 android:visibility="gone" />
-                        </com.google.android.material.textfield.TextInputLayout>
+<!--                        </com.google.android.material.textfield.TextInputLayout>-->
 
-<<<<<<< HEAD
-                        <com.google.android.material.textfield.TextInputLayout
-=======
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="10dp"
-                            android:fontFamily="@font/poppins_semibold"
+                            android:fontFamily="@font/poppins_medium"
                             android:text="Animal weight"
+                            android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="visible" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -758,18 +644,49 @@ android:onClick="sendEmployees"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-=======
-
->>>>>>> bcaf00f (v4)
                                 android:hint="Enter animal weight"
                                 android:inputType="number"
-                                android:padding="20dp"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
                         </com.google.android.material.textfield.TextInputLayout>
 
-<<<<<<< HEAD
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Animal breed"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <Spinner
+                                android:id="@+id/breed"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="10dp"
+                                android:entries="@array/breed"
+                                android:isScrollContainer="true"
+                                android:padding="13dp"
+                                android:background="@drawable/bg_edittext"
+                                android:spinnerMode="dialog"
+                                android:tag="Cattle"
+                                android:visibility="visible" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/linear_pnumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -780,6 +697,7 @@ android:onClick="sendEmployees"
                             android:textSize="14sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -790,149 +708,57 @@ android:onClick="sendEmployees"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-                                android:background="@android:color/transparent"
                                 android:hint="Parent tag number"
-                                android:padding="20dp"
                                 android:inputType="number"
+                                android:textSize="14sp"
+                                android:padding="15dp"
                                 android:textColor="@color/black" />
                         </com.google.android.material.textfield.TextInputLayout>
-
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:background="@drawable/bg_employe"
-                            android:onClick="sendAnimals"
+
                             android:orientation="vertical">
 
-                            <com.google.android.material.card.MaterialCardView
+                            <LinearLayout
+                                android:id="@+id/sendani"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                app:cardBackgroundColor="@color/blueoringnal"
-                                app:cardCornerRadius="30dp"
-                                app:cardElevation="8dp">
-
-                                <TextView
-=======
-                        <LinearLayout
-                            android:id="@+id/linear_pnumber"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="10dp"
-                                android:fontFamily="@font/poppins_medium"
-                                android:text="If this animal is a new born, enter the parent tag number"
-
-                                android:textSize="14sp" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_gravity="center"
 
 
-                                <EditText
-                                    android:id="@+id/parenttagnumber"
->>>>>>> bcaf00f (v4)
-                                    android:layout_width="match_parent"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="200dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_margin="10dp"
-<<<<<<< HEAD
-                                    android:fontFamily="@font/poppins_medium"
+                                    android:minWidth="200dp"
+                                    android:onClick="sendAnimals"
                                     android:text="Submit"
-                                    android:textColor="@color/white"
-                                    android:textSize="14sp" />
-                            </com.google.android.material.card.MaterialCardView>
-=======
+                                    android:textAllCaps="false" />
+                            </LinearLayout>
 
-                                    android:hint="Parent tag number"
-                                    android:inputType="number"
-                                    android:padding="20dp"
-                                    android:textColor="@color/black" />
-                            </com.google.android.material.textfield.TextInputLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/sendani"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-
-
-                            android:orientation="vertical">
-
-                            <!--                            <com.google.android.material.card.MaterialCardView-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_margin="5dp"-->
-                            <!--                                app:cardBackgroundColor="@color/blueoringnal"-->
-                            <!--                                app:cardCornerRadius="5dp"-->
-                            <!--                                app:cardElevation="8dp">-->
-
-                            <!--                                <TextView-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:layout_gravity="center"-->
-                            <!--                                    android:layout_margin="10dp"-->
-                            <!--                                    android:fontFamily="@font/poppins_medium"-->
-                            <!--                                    android:text="Submit"-->
-                            <!--                                    android:textColor="@color/white"-->
-                            <!--                                    android:textSize="14sp" />-->
-                            <!--                            </com.google.android.material.card.MaterialCardView>-->
-
-                            <com.google.android.material.button.MaterialButton
-                                android:layout_width="200dp"
+                            <LinearLayout
+                                android:id="@+id/updateani"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:minWidth="200dp"
-                                android:onClick="sendAnimals"
-                                android:text="Submit"
-                                android:textAllCaps="false" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/updateani"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
+                                android:layout_gravity="center"
 
 
-                            android:orientation="vertical"
-                            android:visibility="gone">
+                                android:orientation="vertical"
+                                android:visibility="gone">
 
-                            <com.google.android.material.button.MaterialButton
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:minWidth="200dp"
-                                android:onClick="updateAnimals"
-                                android:text="Update"
-                                android:textAllCaps="false" />
-                            <!--                            <com.google.android.material.card.MaterialCardView-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_margin="5dp"-->
-                            <!--                                app:cardBackgroundColor="@color/blueoringnal"-->
-                            <!--                                app:cardCornerRadius="5dp"-->
-                            <!--                                app:cardElevation="8dp">-->
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:minWidth="200dp"
+                                    android:onClick="updateAnimals"
+                                    android:text="Update"
+                                    android:textAllCaps="false" />
 
-                            <!--                                <TextView-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:layout_gravity="center"-->
-                            <!--                                    android:layout_margin="10dp"-->
-                            <!--                                    android:fontFamily="@font/poppins_medium"-->
-                            <!--                                    android:text="Update"-->
-                            <!--                                    android:textColor="@color/white"-->
-                            <!--                                    android:textSize="14sp" />-->
-                            <!--                            </com.google.android.material.card.MaterialCardView>-->
->>>>>>> bcaf00f (v4)
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -945,18 +771,32 @@ android:onClick="sendEmployees"
                         android:padding="10dp"
                         android:visibility="gone">
 
-
-                        <com.google.android.material.textfield.TextInputLayout
-<<<<<<< HEAD
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-=======
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Total bunches collected"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:id="@+id/matookeid"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp">
->>>>>>> bcaf00f (v4)
+                            android:layout_gravity="center"
+                            android:layout_margin="10dp"
+                            android:visibility="gone"
+                            android:background="@android:color/transparent"
+                            android:fontFamily="@font/poppins_medium"
+                            android:padding="20dp"
+                            android:text=""
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
 
                             <EditText
@@ -964,15 +804,11 @@ android:onClick="sendEmployees"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-<<<<<<< HEAD
                                 android:layout_margin="10dp"
-                                android:background="@android:color/transparent"
-=======
->>>>>>> bcaf00f (v4)
                                 android:fontFamily="@font/poppins_medium"
                                 android:hint="Enter total number of bunches"
                                 android:inputType="number"
-                                android:padding="20dp"
+                                android:padding="15dp"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -981,38 +817,25 @@ android:onClick="sendEmployees"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-<<<<<<< HEAD
                             android:layout_margin="10dp"
-                            android:visibility="gone"
-=======
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
->>>>>>> bcaf00f (v4)
-                            android:background="@android:color/transparent"
                             android:fontFamily="@font/poppins_medium"
-                            android:padding="10dp"
-                            android:text="Select date of cutting....(get the ryt words)"
+
+                            android:text="Date of cutting"
                             android:textColor="@color/black"
-<<<<<<< HEAD
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:visibility="visible" />
 
                         <CalendarView
                             android:id="@+id/calendermatooke"
                             android:layout_width="match_parent"
-                            android:visibility="gone"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-=======
-                            android:textSize="14sp"
-                            android:visibility="visible" />
+                            android:layout_height="wrap_content"
+                            android:visibility="gone" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginEnd="10dp"
+
                             android:visibility="visible">
 
 
@@ -1021,60 +844,23 @@ android:onClick="sendEmployees"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:layout_margin="10dp"
                                 android:clickable="true"
                                 android:focusable="false"
                                 android:fontFamily="@font/poppins_medium"
                                 android:hint="Date (YYYY-MM-DD)"
                                 android:inputType="text"
-                                android:padding="20dp"
+                                android:padding="15dp"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
-                            android:id="@+id/matookeid"
->>>>>>> bcaf00f (v4)
+                            android:id="@+id/selecteddate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="10dp"
-<<<<<<< HEAD
-                            android:visibility="gone"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/poppins_medium"
-                            android:padding="20dp"
-                            android:id="@+id/selecteddate"
-                            android:text=""
-                            android:textColor="@color/black"
-                            android:textSize="14sp" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/bg_employe"
-android:onClick="sendMatooke"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
-                                app:cardBackgroundColor="@color/blueoringnal"
-                                app:cardCornerRadius="26dp"
-                                app:cardElevation="8dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_baseline_navigate_next_24" />
-                            </com.google.android.material.card.MaterialCardView>
-=======
                             android:background="@android:color/transparent"
                             android:fontFamily="@font/poppins_medium"
                             android:padding="20dp"
@@ -1084,79 +870,51 @@ android:onClick="sendMatooke"
                             android:visibility="gone" />
 
                         <LinearLayout
-                            android:id="@+id/addMatooke"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="5dp"
 
                             android:orientation="vertical">
 
-                            <com.google.android.material.button.MaterialButton
-                                android:layout_width="200dp"
+                            <LinearLayout
+                                android:id="@+id/addMatooke"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:minWidth="200dp"
-                                android:onClick="sendMatooke"
-                                android:text="Submit"
-                                android:textAllCaps="false" />
-                            <!--                            <com.google.android.material.card.MaterialCardView-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_margin="5dp"-->
-                            <!--                                app:cardBackgroundColor="@color/blueoringnal"-->
-                            <!--                                app:cardCornerRadius="5dp"-->
-                            <!--                                app:cardElevation="8dp">-->
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
 
-                            <!--                                <TextView-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:layout_gravity="center"-->
-                            <!--                                    android:fontFamily="@font/poppins_medium"-->
-                            <!--                                    android:padding="5dp"-->
-                            <!--                                    android:text="Submit"-->
-                            <!--                                    android:textColor="@color/white"-->
-                            <!--                                    android:textSize="14sp"-->
-                            <!--                                    android:visibility="visible" />-->
-                            <!--                            </com.google.android.material.card.MaterialCardView>-->
-                        </LinearLayout>
+                                android:orientation="vertical">
 
-                        <LinearLayout
-                            android:id="@+id/updateMatookes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="5dp"
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:minWidth="200dp"
+                                    android:onClick="sendMatooke"
+                                    android:text="Submit"
+                                    android:textAllCaps="false" />
 
-                            android:orientation="vertical"
-                            android:visibility="gone">
+                            </LinearLayout>
 
-                            <com.google.android.material.button.MaterialButton
-                                android:layout_width="200dp"
+                            <LinearLayout
+                                android:id="@+id/updateMatookes"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:minWidth="200dp"
-                                android:text="Update"
-                                android:onClick="updateMatooke"
-                                android:textAllCaps="false" />
-                            <!--                            <com.google.android.material.card.MaterialCardView-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_margin="5dp"-->
-                            <!--                                app:cardBackgroundColor="@color/blueoringnal"-->
-                            <!--                                app:cardCornerRadius="5dp"-->
-                            <!--                                app:cardElevation="8dp">-->
+                                android:layout_gravity="center"
+                                android:layout_margin="5dp"
 
-                            <!--                                <TextView-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:layout_gravity="center"-->
-                            <!--                                    android:fontFamily="@font/poppins_medium"-->
-                            <!--                                    android:padding="20dp"-->
-                            <!--                                    android:text="Update"-->
-                            <!--                                    android:textColor="@color/white"-->
-                            <!--                                    android:textSize="14sp"-->
-                            <!--                                    android:visibility="visible" />-->
-                            <!--                            </com.google.android.material.card.MaterialCardView>-->
->>>>>>> bcaf00f (v4)
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:layout_width="200dp"
+                                    android:layout_height="wrap_content"
+                                    android:minWidth="200dp"
+                                    android:onClick="updateMatooke"
+                                    android:text="Update"
+                                    android:textAllCaps="false" />
+
+
+                            </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -1170,10 +928,6 @@ android:onClick="sendMatooke"
                         android:padding="10dp"
                         android:visibility="gone">
 
-<<<<<<< HEAD
-
-                        <com.google.android.material.textfield.TextInputLayout
-=======
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -1181,142 +935,8 @@ android:onClick="sendMatooke"
                             android:layout_marginStart="10dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Total litres"
-
-                            android:textSize="14sp" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-
-                            <EditText
-                                android:id="@+id/total_litres"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Total litres"
-                                android:textSize="14sp"
-                                android:inputType="number"
-                                android:fontFamily="@font/poppins_medium"
-                                android:padding="20dp"
-                                android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Total litres"
-                                android:inputType="number"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Litres set for home consumption"
-
-                            android:textSize="14sp" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-
-                            <EditText
-                                android:id="@+id/home_litres"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Litres for home consumption"
-                                android:padding="20dp"
-                                android:inputType="number"
-                                android:fontFamily="@font/poppins_medium"
-                                android:textSize="14sp"
-                                android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-=======
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Litres for home consumption"
-                                android:inputType="number"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Litres set for the diary"
-
-                            android:textSize="14sp" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-
-                            <EditText
-                                android:id="@+id/diary_litres"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Litres for diary consumption"
-                                android:padding="20dp"
-                                android:inputType="number"
-                                android:fontFamily="@font/poppins_medium"
-                                android:textColor="@color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-=======
-                                android:fontFamily="@font/poppins_medium"
-                                android:hint="Litres for diary consumption"
-                                android:inputType="number"
-                                android:padding="20dp"
-                                android:textColor="@color/black"
-                                android:textSize="14sp" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
->>>>>>> bcaf00f (v4)
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="start"
-                            android:layout_marginStart="10dp"
-                            android:fontFamily="@font/poppins_medium"
-                            android:text="Select time for milking"
-<<<<<<< HEAD
                             android:textColor="@color/black"
                             android:textSize="14sp" />
-
-=======
-
-                            android:textSize="14sp" />
-
                         <TextView
                             android:id="@+id/milkid"
                             android:layout_width="wrap_content"
@@ -1328,42 +948,154 @@ android:onClick="sendMatooke"
                             android:textColor="@color/black"
                             android:textSize="14sp"
                             android:visibility="gone" />
-
-                        <EditText
-                            android:id="@+id/selectedMilkTime"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="10dp"
-                            android:background="@drawable/bg_edittext"
-                            android:focusable="false"
-                            android:fontFamily="@font/poppins_medium"
-                            android:hint=""
-                            android:inputType="text"
-                            android:padding="20dp"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:visibility="gone" />
-
->>>>>>> bcaf00f (v4)
-                        <Spinner
-                            android:id="@+id/timesent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-<<<<<<< HEAD
-=======
-                            android:background="@drawable/bg_edittext"
->>>>>>> bcaf00f (v4)
-                            android:entries="@array/milktime"
-                            android:isScrollContainer="true"
-                            android:padding="20dp"
-                            android:spinnerMode="dialog"
-                            android:tag="Cattle"
-                            android:visibility="visible" />
-<<<<<<< HEAD
                         <com.google.android.material.textfield.TextInputLayout
-=======
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <EditText
+                                android:id="@+id/total_litres"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:hint="Total litres"
+                                android:inputType="number"
+                                android:padding="15dp"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Litres set for home consumption"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <EditText
+                                android:id="@+id/home_litres"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:hint="Litres for home consumption"
+                                android:inputType="number"
+                                android:padding="15dp"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Litres set for the diary"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <EditText
+                                android:id="@+id/diary_litres"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:fontFamily="@font/poppins_medium"
+                                android:hint="Litres for diary consumption"
+                                android:inputType="number"
+                                android:padding="15dp"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Select time for milking"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/selectedMilkTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_margin="10dp"
+                                android:background="@drawable/bg_edittext"
+                                android:focusable="false"
+                                android:fontFamily="@font/poppins_medium"
+                                android:hint=""
+                                android:inputType="text"
+                                android:padding="15dp"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/textseletmilkttime"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="Edit time slot"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"
+                                android:visibility="gone" />
+
+                            <View
+                                android:id="@+id/mmmm"
+                                android:layout_width="40dp"
+                                android:layout_marginBottom="10dp"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="10dp"
+                                android:background="@color/black"
+                                android:visibility="gone" />
+
+
+                            <Spinner
+                                android:id="@+id/timesent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:entries="@array/milktime"
+                                android:isScrollContainer="true"
+                                android:padding="15dp"
+                                android:background="@drawable/bg_edittext"
+                                android:spinnerMode="dialog"
+                                android:tag="Cattle"
+                                android:visibility="visible" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -1372,11 +1104,11 @@ android:onClick="sendMatooke"
                             android:layout_marginStart="10dp"
                             android:fontFamily="@font/poppins_medium"
                             android:text="Comment section"
+                            android:textColor="@color/black"
                             android:textSize="14sp" />
 
                         <com.google.android.material.textfield.TextInputLayout
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
->>>>>>> bcaf00f (v4)
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
@@ -1387,57 +1119,20 @@ android:onClick="sendMatooke"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_margin="10dp"
-<<<<<<< HEAD
-                                android:background="@android:color/transparent"
-                                android:hint="Enter comment in-case of any incident"
-                                android:inputType="text"
-                                android:fontFamily="@font/poppins_medium"                                android:textSize="14sp"
-                                android:padding="20dp"
-                                android:textColor="@color/black" />
-=======
                                 android:fontFamily="@font/poppins_medium"
                                 android:hint="Enter comment in-case of any incident"
                                 android:inputType="text"
-                                android:padding="20dp"
+                                android:padding="15dp"
                                 android:textColor="@color/black"
                                 android:textSize="14sp" />
->>>>>>> bcaf00f (v4)
                         </com.google.android.material.textfield.TextInputLayout>
 
 
                         <LinearLayout
-<<<<<<< HEAD
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/bg_employe"
-android:onClick="sendMilk"
-                            android:orientation="vertical">
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginEnd="10dp"
-                                android:layout_marginBottom="10dp"
-                                app:cardBackgroundColor="@color/blueoringnal"
-                                app:cardCornerRadius="26dp"
-                                app:cardElevation="8dp">
-
-                                <ImageView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_gravity="center"
-                                    android:padding="5dp"
-                                    android:src="@drawable/ic_baseline_navigate_next_24" />
-                            </com.google.android.material.card.MaterialCardView>
-=======
                             android:id="@+id/addMilk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-
                             android:orientation="vertical">
 
                             <com.google.android.material.button.MaterialButton
@@ -1463,29 +1158,9 @@ android:onClick="sendMilk"
                                 android:layout_width="200dp"
                                 android:layout_height="wrap_content"
                                 android:minWidth="200dp"
-                                android:text="Update"
                                 android:onClick="updateMilk"
+                                android:text="Update"
                                 android:textAllCaps="false" />
-                            <!--                            <com.google.android.material.card.MaterialCardView-->
-                            <!--                                android:layout_width="wrap_content"-->
-                            <!--                                android:layout_height="wrap_content"-->
-                            <!--                                android:layout_margin="5dp"-->
-                            <!--                                app:cardBackgroundColor="@color/blueoringnal"-->
-                            <!--                                app:cardCornerRadius="5dp"-->
-                            <!--                                app:cardElevation="8dp">-->
-
-                            <!--                                <TextView-->
-                            <!--                                    android:layout_width="match_parent"-->
-                            <!--                                    android:layout_height="wrap_content"-->
-                            <!--                                    android:layout_gravity="center"-->
-                            <!--                                    android:fontFamily="@font/poppins_medium"-->
-                            <!--                                    android:padding="20dp"-->
-                            <!--                                    android:text="Update"-->
-                            <!--                                    android:textColor="@color/white"-->
-                            <!--                                    android:textSize="14sp"-->
-                            <!--                                    android:visibility="visible" />-->
-                            <!--                            </com.google.android.material.card.MaterialCardView>-->
->>>>>>> bcaf00f (v4)
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
